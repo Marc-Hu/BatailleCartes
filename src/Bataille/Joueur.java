@@ -8,4 +8,12 @@ public class Joueur {
 		this.nom= nomJoueur;
 		this.nbPartiesGagnees=nbPartieGagne;
 	}
+	
+	public String getNom(){
+		return this.nom;
+	}
+	
+	public int getNbPartieGagne(){
+		return this.nbPartiesGagnees;
+	}
 }
