@@ -16,10 +16,12 @@ public class Carte {
 	 * Construit une instance de Carte
 	 * @param couleur		Couleur de la carte(Carreau, Coeur, Trèfle ou Pique)
 	 * @param valeur		Valeur de la carte(De 2 à 14 avec 11=Valet, ..., 14=As)
+	 * @param nomFichier	Nom du fichier associé à l'image de la carte
 	 */
-	public Carte(String couleur, int valeur){
+	public Carte(String couleur, int valeur, String nomFichier){
 		this.couleur = couleur;
 		this.valeur = valeur;
+		this.nomFichier = nomFichier;
 	}
 	
 /*Getters*/
@@ -40,29 +42,13 @@ public class Carte {
 	}
 	
 /*Méthodes*/
-	
 	/**
 	 * Retourne une chaîne de caractères contenant les informations de la Carte
 	 */
 	public String toString(){
 		return this.getValeur()+" de "+this.getCouleur();
 	}
-	
-	/**
-	 * Test si les comptes bancaires ont les mêmes caractéristiques
-	 * @param o			Compte à comparer avec le compte receveur
-	 * @return true		Si les comptes ont les mêmes caractérisques
-	 */
-	public boolean equals(Object o){
-		if(!(o instanceof Carte))
-			return false;
-		
-		Carte c = (Carte)o;
-		
-		return this.getCouleur().equals(c.getCouleur())
-				&& this.getValeur() == c.getValeur();
-	}
-	
+
 	/**
 	 * Vérifie si la Carte courante a une plus grande valeur que la carte c
 	 * @param c		La carte à comparer
