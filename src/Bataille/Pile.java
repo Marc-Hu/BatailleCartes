@@ -44,6 +44,11 @@ public class Pile {
 		return tmp;
 	}
 	
+	/**
+	 * Renvoie la taille de la pile
+	 * @return retourne la taille de la pile.
+	 */
+	
 	public int taillePile(){
 		return pile.size();
 	}

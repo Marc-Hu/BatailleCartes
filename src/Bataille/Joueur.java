@@ -1,5 +1,4 @@
 package Bataille;
-import java.util.*;
 
 public class Joueur {
 	private String nom;
@@ -68,5 +67,29 @@ public class Joueur {
 	
 	public void direBataille(){
 		System.out.println("BATAILLE");
+	}
+	
+	/**
+	 * Méthode toString de la classe Joueur.
+	 * @return Le toString de la classe Joueur.
+	 */
+	
+	public String toString(){
+		String s = "Je suis le joueur "+this.nom+" est j'ai gagné "+this.nbPartiesGagnees+" fois.";
+		return s;
+	}
+	
+	/**
+	 * Méthode equals de la classe Joueur
+	 * @return True si deux joueurs sont équivalent et False sinon.
+	 */
+	
+	public boolean equals(Object a){
+		if (!(a instanceof Joueur))
+			return false;
+		Joueur p = (Joueur) a;
+		if (this.nom.equals(p.getNom()) && this.nbPartiesGagnees==p.getNbPartieGagne() && this.cartesEnMain.equals(p.cartesEnMain.getMain()) && this.pileCartes.equals(p.pileCartes.getPile()))
+			return true;
+		return false;
 	}
 }

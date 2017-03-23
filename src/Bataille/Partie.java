@@ -7,10 +7,10 @@ public class Partie {
 	
 	/**
 	 * Permet d'initialiser une Partie.
-	 * @param j est un tableau de joueur
+	 * @param initJoueur est un tableau de joueur
 	 */
-	public Partie(HashSet<Joueur> j){
-		this.joueurs = j;
+	public Partie(HashSet<Joueur> initJoueur){
+		this.joueurs = initJoueur;
 	}
 	
 //	public boolean estTerminer(){
@@ -18,4 +18,6 @@ public class Partie {
 //			if(j.nbCartes() != )
 //		}
 //	}
+	
+	
 }
