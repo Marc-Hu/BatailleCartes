@@ -22,6 +22,15 @@ public class Main {
 	}
 	
 	/**
+	 * Méhtode get de la classe Main qui va renvoyer le nombres de cartes dans la main
+	 * @return Le nombre de cartes en Main
+	 */
+	
+	public int getNbCartesMain(){
+		return this.cartesMain.size();
+	}
+	
+	/**
 	 * Méthode de la classe Main qui va ajouter une carte à la fin du Deque
 	 * @param carteAjoute Carte à ajouter dans le Deque
 	 */
