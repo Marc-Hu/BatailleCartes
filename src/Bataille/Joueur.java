@@ -1,8 +1,14 @@
 package Bataille;
 
+/**
+ * Classe représentant le joueur
+ * @author Marc
+ * @version 1.0
+ */
+
 public class Joueur {
 	private String nom;
-	private int nbPartiesGagnees;
+	//private int nbPartiesGagnees;
 	private Main cartesEnMain;
 	private Pile pileCartes;
 	
@@ -12,9 +18,8 @@ public class Joueur {
 	 * @param nbPartieGagne	Nombre de parties gagnées par le joueur
 	 */
 	
-	public Joueur(String nomJoueur, int nbPartieGagne){
+	public Joueur(String nomJoueur){
 		this.nom= nomJoueur;
-		this.nbPartiesGagnees=nbPartieGagne;
 	}
 	
 	/**
@@ -30,11 +35,11 @@ public class Joueur {
 	 * Méthode get qui renvoie le nombre de parties gagnées par le joueur
 	 * @return Le nombre de parties gagnées
 	 */
-	
+	/*
 	public int getNbPartieGagne(){
 		return this.nbPartiesGagnees;
 	}
-	
+	*/
 	/**
 	 * Méthode get qui renvoie le nombre de cartes en Main
 	 * @return Nombre de carte en Main
@@ -50,16 +55,18 @@ public class Joueur {
 	 */
 	
 	public int getNbCartesPile(){
-		return this.pileCartes.taillePile();
+		return this.pileCartes.taille();
 	}
 	
 	/**
 	 * Méthode set qui va incrémenter le nombre de parties gagnées par le joueur
 	 */
 	
+	/*
 	public void setNbPartieGagne(){
 		this.nbPartiesGagnees++;
 	}
+	*/
 	
 	/**
 	 * Méthode qui va afficher bataille.
@@ -75,21 +82,8 @@ public class Joueur {
 	 */
 	
 	public String toString(){
-		String s = "Je suis le joueur "+this.nom+" est j'ai gagné "+this.nbPartiesGagnees+" fois.";
+		String s = "Je suis le joueur "+this.nom+'.';
 		return s;
 	}
 	
-	/**
-	 * Méthode equals de la classe Joueur
-	 * @return True si deux joueurs sont équivalent et False sinon.
-	 */
-	
-	public boolean equals(Object a){
-		if (!(a instanceof Joueur))
-			return false;
-		Joueur p = (Joueur) a;
-		if (this.nom.equals(p.getNom()) && this.nbPartiesGagnees==p.getNbPartieGagne() && this.cartesEnMain.equals(p.cartesEnMain.getMain()) && this.pileCartes.equals(p.pileCartes.getPile()))
-			return true;
-		return false;
-	}
 }
