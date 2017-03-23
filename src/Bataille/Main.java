@@ -35,7 +35,7 @@ public class Main {
 	 * @param carteAjoute Carte à ajouter dans le Deque
 	 */
 	
-	public void ajouterCarte(Carte carteAjoute){
+	public void ajouter(Carte carteAjoute){
 		this.cartesMain.offerLast(carteAjoute);
 	}
 	
@@ -44,7 +44,7 @@ public class Main {
 	 * @return Retourne la carte au dessus de l'arrayDeque
 	 */
 	
-	public Carte retirerCarte(){
+	public Carte retirer(){
 		return this.cartesMain.pop();
 	}
 	
