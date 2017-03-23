@@ -56,4 +56,10 @@ public class Main {
 	public boolean mainVide(){
 		return this.cartesMain.isEmpty();
 	}
+	
+	public String toString(){
+		String s = "J'ai en Main toutes les cartes suivante :";
+		
+		return s;
+	}
 }
