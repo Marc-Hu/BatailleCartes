@@ -57,9 +57,18 @@ public class Main {
 		return this.cartesMain.isEmpty();
 	}
 	
+	/**
+	 * Méthode toString de la classe Main
+	 * @return Retourne le toString de la classe Main
+	 */
+	
 	public String toString(){
-		String s = "J'ai en Main toutes les cartes suivante :";
-		
+		String s = "J'ai en Main toutes les cartes suivante :\n";
+		ArrayDeque <Carte> listeCarteMain = this.cartesMain;
+		while (!listeCarteMain.isEmpty()){
+			Carte carteAffiche = listeCarteMain.pop();
+			s+=carteAffiche.getValeur()+" "+carteAffiche.getCouleur()+'\n';
+		}
 		return s;
 	}
 }
