@@ -5,7 +5,7 @@ public class Joueur {
 	private String nom;
 	private int nbPartiesGagnees;
 	private Main cartesEnMain;
-	private Pile pileCarte;
+	private Pile pileCartes;
 	
 	/**
 	 * Constructeur de la classe Joueur qui a un nom est le nombre de parties gagnées.
@@ -46,7 +46,7 @@ public class Joueur {
 	}
 	
 	public int getNbCartesPile(){
-		return this.pileCartes.getPile();
+		return this.pileCartes.taillePile();
 	}
 	
 	/**
