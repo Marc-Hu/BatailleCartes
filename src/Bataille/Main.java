@@ -3,6 +3,7 @@ import java.util.*;
 
 /**
  * Classe de gestion de la main du joueur
+ * @version 1.0
  * @author Marc Hu
  */
 public class Main {
