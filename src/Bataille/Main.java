@@ -64,11 +64,8 @@ public class Main {
 	
 	public String toString(){
 		String s = "J'ai en Main toutes les cartes suivantes :\n";
-		ArrayDeque <Carte> listeCarteMain = this.cartesMain;
-		while (!listeCarteMain.isEmpty()){
-			Carte carteAffiche = listeCarteMain.pop();
+		for (Carte carteAffiche : this.cartesMain)
 			s+=carteAffiche.toString();
-		}
 		return s;
 	}
 }
