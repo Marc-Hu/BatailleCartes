@@ -1,9 +1,9 @@
 package Bataille;
-import java.util.HashSet;
-import ExceptionBatailles.nombreCarteException;
+import ExceptionBatailles.*;
+import java.util.*;
 
 public class Paquet{
-	private HashSet<Carte> paquetCartes;
+	private List<Carte> paquetCartes;
 	
 	/**
 	 * Permet d'initialiser un paquet de Carte.
@@ -11,7 +11,7 @@ public class Paquet{
 	public Paquet(int nbCarte) throws nombreCarteException{
 		if(nbCarte != 32 || nbCarte != 52) throw new nombreCarteException(nbCarte);
 		int minValue = (nbCarte == 32) ? 7 : 1;
-		this.paquetCartes = new HashSet<Carte>();
+		this.paquetCartes = new ArrayList<Carte>();
 		String couleur = new String();
 		// on génère les cartes.
 		for(int j=0; j<4; j++){
@@ -33,4 +33,10 @@ public class Paquet{
 		return this.paquetCartes.size();
 	}
 	
+	/**
+	 * Melange le paquet de Carte
+	 */
+	public void melanger(){
+		Collections.shuffle(paquetCartes);
+	}
 }
