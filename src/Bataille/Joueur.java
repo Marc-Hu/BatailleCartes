@@ -47,7 +47,7 @@ public class Joueur {
 	 */
 	
 	public int getNbCartesEnMain(){
-		return this.cartesEnMain.getNbCartesMain();
+		return this.cartesEnMain.taille();
 	}
 	
 	/**
