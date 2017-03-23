@@ -27,8 +27,7 @@ public class Pile {
 		for(Carte c : this.pile)
 			str += c.toString();
 		
-		return str;
-		
+		return str;	
 	}
 	
 	/**
@@ -43,8 +42,8 @@ public class Pile {
 	 * Vérifie si la pile est vide.
 	 * @return True si la pile est vide sinon False 
 	 */
-	public boolean vide(){
-		return pile.empty();
+	public boolean estVide(){
+		return this.pile.empty();
 	}
 	
 	/**
@@ -52,17 +51,17 @@ public class Pile {
 	 * @return La copie de la pile supprimer
 	 */
 	public Stack<Carte> viderPile(){
-		Stack<Carte> tmp = pile;
-		pile.removeAllElements();
+		Stack<Carte> tmp = this.pile;
+		this.pile.removeAllElements();
 		return tmp;
 	}
 	
 	/**
-	 * Renvoie la taille de la pile
+	 * Retourne la taille de la pile
 	 * @return La taille de la pile.
 	 */
 	public int taille(){
-		return pile.size();
+		return this.pile.size();
 	}
 	
 }
