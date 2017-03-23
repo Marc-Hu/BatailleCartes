@@ -2,7 +2,7 @@ package Bataille;
 import java.util.*;
 
 public class Main {
-	private Deque<Carte> cartesMain;
+	private ArrayDeque<Carte> cartesMain;
 	
 	/**
 	 * Constructeur de la classe Main.
@@ -40,11 +40,12 @@ public class Main {
 	}
 	
 	/**
-	 * Méthode de la classe Main qui va retirer la carte qui se situe tout en haut du Deque
+	 * Méthode de la classe Main qui va retirer une carte au dessus de la pile et la retourner
+	 * @return Retourne la carte au dessus de l'arrayDeque
 	 */
 	
-	public void retirerCarte(){
-		this.cartesMain.pop();
+	public Carte retirerCarte(){
+		return this.cartesMain.pop();
 	}
 	
 	/**
