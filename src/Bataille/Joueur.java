@@ -42,8 +42,13 @@ public class Joueur {
 	 */
 	
 	public int getNbCartesEnMain(){
-		return this.cartesEnMain.getMain().size();
+		return this.cartesEnMain.getNbCartesMain();
 	}
+	
+	/**
+	 * Méthode get qui renvoie le nombre de cartes sur la pile
+	 * @return Nombre de carte sur la pile
+	 */
 	
 	public int getNbCartesPile(){
 		return this.pileCartes.taillePile();
