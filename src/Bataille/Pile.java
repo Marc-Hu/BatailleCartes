@@ -1,34 +1,47 @@
 package Bataille;
 import java.util.Stack;
 
+/**
+ * Classe de gestion d'une pile de Cartes
+ * @author Steeve Jerent / Tony Clonier
+ */
 public class Pile {
-	private Stack<Carte> pile;
 	
+	private Stack<Carte> pile;
+
+/*Constructeurs*/
 	/**
-	 * Permet d'initialiser une pile de carte.
+	 * Construit une instance de pile de carte.
 	 */
 	public Pile(){
 		this.pile = new Stack<Carte>(); 
 	}
 	
-	/*
-	 * Retourne la pile de carte
+/*Méthodes*/
+	/**
+	 * Retourne une chaîne de caractères contenant les informations de la pile de Cartes
 	 */
-	public Stack<Carte> getPile(){
-		return this.pile;
+	public String toString(){
+		String str = new String();
+		str += "Contenu de la pile : \n";
+		for(Carte c : this.pile)
+			str += c.toString();
+		
+		return str;
+		
 	}
 	
 	/**
 	 * Ajoute un carte au dessus de la pile
-	 * @param c
+	 * @param c		Carte à ajouter
 	 */
 	public void ajouter(Carte c){
-		pile.push(c);
+		this.pile.push(c);
 	}
 	
 	/**
-	 * Test si la pile est vide.
-	 * @return retourne True si la est vide sinon False 
+	 * Vérifie si la pile est vide.
+	 * @return True si la pile est vide sinon False 
 	 */
 	public boolean vide(){
 		return pile.empty();
@@ -36,7 +49,7 @@ public class Pile {
 	
 	/**
 	 * Vide la pile de carte
-	 * @return retourne la copie de la pile supprimer
+	 * @return La copie de la pile supprimer
 	 */
 	public Stack<Carte> viderPile(){
 		Stack<Carte> tmp = pile;
@@ -46,10 +59,9 @@ public class Pile {
 	
 	/**
 	 * Renvoie la taille de la pile
-	 * @return retourne la taille de la pile.
+	 * @return La taille de la pile.
 	 */
-	
-	public int taillePile(){
+	public int taille(){
 		return pile.size();
 	}
 	
