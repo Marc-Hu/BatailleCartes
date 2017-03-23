@@ -2,7 +2,7 @@ package Bataille;
 import java.util.*;
 
 public class Main {
-	private Deque<Carte> cartesMain;
+	private ArrayDeque<Carte> cartesMain;
 	
 	/**
 	 * Constructeur de la classe Main.
