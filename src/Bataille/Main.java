@@ -67,7 +67,7 @@ public class Main {
 		ArrayDeque <Carte> listeCarteMain = this.cartesMain;
 		while (!listeCarteMain.isEmpty()){
 			Carte carteAffiche = listeCarteMain.pop();
-			s+=carteAffiche.toString()+'\n';
+			s+=carteAffiche.toString();
 		}
 		return s;
 	}
