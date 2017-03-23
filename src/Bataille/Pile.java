@@ -44,4 +44,8 @@ public class Pile {
 		return tmp;
 	}
 	
+	public int taillePile(){
+		return pile.size();
+	}
+	
 }
