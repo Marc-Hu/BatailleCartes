@@ -50,7 +50,7 @@ public class Joueur {
 	 */
 	
 	public int getNbCartesPile(){
-		return this.pileCartes.taillePile();
+		return this.pileCartes.taille();
 	}
 	
 	/**
@@ -79,17 +79,4 @@ public class Joueur {
 		return s;
 	}
 	
-	/**
-	 * Méthode equals de la classe Joueur
-	 * @return True si deux joueurs sont équivalent et False sinon.
-	 */
-	
-	public boolean equals(Object a){
-		if (!(a instanceof Joueur))
-			return false;
-		Joueur p = (Joueur) a;
-		if (this.nom.equals(p.getNom()) && this.nbPartiesGagnees==p.getNbPartieGagne() && this.cartesEnMain.equals(p.cartesEnMain.getMain()) && this.pileCartes.equals(p.pileCartes.getPile()))
-			return true;
-		return false;
-	}
 }
