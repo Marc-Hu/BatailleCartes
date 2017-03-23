@@ -45,6 +45,10 @@ public class Joueur {
 		return this.cartesEnMain.getMain().size();
 	}
 	
+	public int getNbCartesPile(){
+		return this.pileCartes.getPile();
+	}
+	
 	/**
 	 * Méthode set qui va incrémenter le nombre de parties gagnées par le joueur
 	 */
