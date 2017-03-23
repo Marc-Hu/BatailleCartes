@@ -1,62 +1,32 @@
 package Bataille;
 import java.util.*;
 
+/**
+ * Classe de gestion de la main du joueur
+ * @author Marc Hu
+ */
 public class Main {
+	
 	private ArrayDeque<Carte> cartesMain;
 	
+/*Constructeur*/
 	/**
-	 * Constructeur de la classe Main.
+	 * Construit une instance de main
 	 */
-	
 	public Main(){
 		this.cartesMain=new ArrayDeque<Carte>();
 	}
 	
+/*Getter*/
 	/** 
-	 * Méthode get de la classe Main qui va renvoyer les cartes dans la main
-	 * @return Les cartes en main
+	 * Retourne la main courante
+	 * @return La main courante
 	 */
-	
-	public Deque<Carte> getMain(){
+	public ArrayDeque<Carte> getMain(){
 		return this.cartesMain;
 	}
-	
-	/**
-	 * Méhtode get de la classe Main qui va renvoyer le nombres de cartes dans la main
-	 * @return Le nombre de cartes en Main
-	 */
-	
-	public int getNbCartesMain(){
-		return this.cartesMain.size();
-	}
-	
-	/**
-	 * Méthode de la classe Main qui va ajouter une carte à la fin du Deque
-	 * @param carteAjoute Carte à ajouter dans le Deque
-	 */
-	
-	public void ajouter(Carte carteAjoute){
-		this.cartesMain.offerLast(carteAjoute);
-	}
-	
-	/**
-	 * Méthode de la classe Main qui va retirer une carte au dessus de la pile et la retourner
-	 * @return Retourne la carte au dessus de l'arrayDeque
-	 */
-	
-	public Carte retirer(){
-		return this.cartesMain.pop();
-	}
-	
-	/**
-	 * Méthode de la classe Main qui va vérifier qui la Main est vide.
-	 * @return True si le Deque est vide et False si le Deque n'est pas vide.
-	 */
-	
-	public boolean mainVide(){
-		return this.cartesMain.isEmpty();
-	}
-	
+
+/*Méthodes*/
 	/**
 	 * Méthode toString de la classe Main
 	 * @return Retourne le toString de la classe Main
@@ -67,5 +37,37 @@ public class Main {
 		for (Carte carteAffiche : this.cartesMain)
 			s+=carteAffiche.toString();
 		return s;
+	}
+	
+	/**
+	 * Ajoute la carte c en dessous de la main 
+	 * @param carteAjoute Carte à ajouter dans le Deque
+	 */
+	public void ajouter(Carte c){
+		this.cartesMain.offerLast(c);
+	}
+	
+	/**
+	 * Retire la carte au dessus de la main
+	 * @return La carte au dessus de la main
+	 */
+	public Carte retirer(){
+		return this.cartesMain.pop();
+	}
+	
+	/**
+	 * Vérifie si la main est vide
+	 * @return True si la main est vide, False sinon
+	 */
+	public boolean estVide(){
+		return this.cartesMain.isEmpty();
+	}
+	
+	/**
+	 * Retourne le nombre de cartes présentes dans la main
+	 * @return Le nombre de cartes présentes dans la main
+	 */
+	public int taille(){
+		return this.cartesMain.size();
 	}
 }
