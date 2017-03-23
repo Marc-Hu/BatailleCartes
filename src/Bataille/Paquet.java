@@ -9,10 +9,11 @@ public class Paquet{
 	 * Permet d'initialiser un paquet de Carte.
 	 */
 	public Paquet(int nbCarte) throws nombreCarteException{
-		if(nbCarte != 32 || nbCarte != 56) throw new nombreCarteException(nbCarte);
+		if(nbCarte != 32 || nbCarte != 52) throw new nombreCarteException(nbCarte);
 		int minValue = (nbCarte == 32) ? 7 : 1;
 		this.paquetCartes = new HashSet<Carte>();
 		String couleur = new String();
+		// on génère les cartes.
 		for(int j=0; j<4; j++){
 			if(j==0) couleur="Pique";
 			if(j==1) couleur="Carré";
@@ -31,6 +32,5 @@ public class Paquet{
 	public int taille(){
 		return this.paquetCartes.size();
 	}
-	
 	
 }
