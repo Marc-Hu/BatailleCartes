@@ -1,6 +1,12 @@
 package Bataille;
 import java.util.*;
 
+/**
+ * Classe représentant la Main
+ * @author Marc
+ * @version 1.0
+ */
+
 public class Main {
 	private ArrayDeque<Carte> cartesMain;
 	
