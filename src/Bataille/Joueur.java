@@ -1,8 +1,11 @@
 package Bataille;
+import java.util.*;
 
 public class Joueur {
 	private String nom;
 	private int nbPartiesGagnees;
+	private Main cartesEnMain;
+	private Pile pileCarte;
 	
 	/**
 	 * Constructeur de la classe Joueur qui a un nom est le nombre de parties gagnées.
@@ -31,6 +34,15 @@ public class Joueur {
 	
 	public int getNbPartieGagne(){
 		return this.nbPartiesGagnees;
+	}
+	
+	/**
+	 * Méthode get qui renvoie le nombre de cartes en Main
+	 * @return Nombre de carte en Main
+	 */
+	
+	public int getNbCartesEnMain(){
+		return this.cartesEnMain.getMain().size();
 	}
 	
 	/**

@@ -43,7 +43,7 @@ public class Main {
 	 * @return True si le Deque est vide et False si le Deque n'est pas vide.
 	 */
 	
-	public boolean estVide(){
+	public boolean mainVide(){
 		return this.cartesMain.isEmpty();
 	}
 }
