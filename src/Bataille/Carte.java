@@ -9,6 +9,7 @@ public class Carte {
 
 	private String couleur;
 	private int valeur;
+	private String nomFichier;
 	
 /*Constructeur*/
 	/**
