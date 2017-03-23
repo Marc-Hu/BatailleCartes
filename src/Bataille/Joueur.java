@@ -40,4 +40,12 @@ public class Joueur {
 	public void setNbPartieGagne(){
 		this.nbPartiesGagnees++;
 	}
+	
+	/**
+	 * Méthode qui va afficher bataille.
+	 */
+	
+	public void direBataille(){
+		System.out.println("BATAILLE");
+	}
 }
