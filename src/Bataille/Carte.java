@@ -7,9 +7,9 @@ package Bataille;
  */
 public class Carte {
 
-	private String couleur;
 	private int valeur;
-	private String nomFichier;
+	private String couleur;
+	//private String nomFichier;
 	
 /*Constructeur*/
 	/**
@@ -18,9 +18,10 @@ public class Carte {
 	 * @param valeur		Valeur de la carte(De 2 à 14 avec 11=Valet, ..., 14=As)
 	 * @param nomFichier	Nom du fichier associé à l'image de la carte
 	 */
-	public Carte(String couleur, int valeur/**, String nomFichier**/){
-		this.couleur = couleur;
+	public Carte(int valeur, String couleur/**, String nomFichier**/){
 		this.valeur = valeur;
+		this.couleur = couleur;
+
 		//this.nomFichier = nomFichier;
 	}
 	

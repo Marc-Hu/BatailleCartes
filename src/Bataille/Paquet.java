@@ -2,11 +2,20 @@ package Bataille;
 import ExceptionBatailles.*;
 import java.util.*;
 
+/**
+ * Classe de gestion d'un paquet de cartes
+ * @version 1.0
+ * @author Steeve Jerent/Tony Clonier
+ *
+ */
 public class Paquet{
+	
 	private List<Carte> paquetCartes;
 	private HashSet<Main> mainsJoueurs;
+	
+/*Constructeur*/
 	/**
-	 * Permet d'initialiser un paquet de Carte.
+	 * Construit une instance de paquet
 	 */
 	public Paquet(int nbCarte, HashSet<Main> lesMains) throws nombreCarteException{
 		if(nbCarte != 32 || nbCarte != 52) throw new nombreCarteException(nbCarte);
@@ -21,14 +30,28 @@ public class Paquet{
 			if(j==2) couleur="Trèfle";
 			if(j==3) couleur="Coeur";
 			for(int valeur = minValue; valeur <= 14; valeur++){
-				this.paquetCartes.add(new Carte(couleur, valeur, valeur+"-"+couleur.".png"));
+				this.paquetCartes.add(new Carte(valeur, couleur/*, valeur+"-"+couleur.".png"*/));
 			}
 		}
 	}
 	
+/*Méthodes*/
+	
+	/**
+	 * Retourne une chaîne de caractères contenant les informations de la pile de Cartes
+	 */
+	public String toString(){
+		String str = new String();
+		str += "Contenu du paquet de cartes : \n";
+		for(Carte c : this.paquetCartes)
+			str += c.toString();
+		
+		return str;	
+	}
+	
 	/**
 	 * Retourne le nombre de carte dans le paquet
-	 * @return
+	 * @return Le nombre de cartes dans le paquet
 	 */
 	public int taille(){
 		return this.paquetCartes.size();
@@ -42,7 +65,7 @@ public class Paquet{
 	}
 	
 	// à voir pour la distribution
-	public void distribuer(){
+	/*public void distribuer(){
 		int tailleMain = this.mainsJoueurs.size();
 		int i;
 		for(i=0; i<tailleMain; i++){
@@ -51,5 +74,5 @@ public class Paquet{
 				
 			}
 		}
-	}
+	}*/
 }

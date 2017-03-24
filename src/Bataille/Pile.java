@@ -57,8 +57,8 @@ public class Pile {
 	}
 	
 	/**
-	 * Retourne la taille de la pile
-	 * @return La taille de la pile.
+	 * Retourne le nombre de cartes de la pile
+	 * @return Le nombre de cartes de la pile.
 	 */
 	public int taille(){
 		return this.pile.size();
