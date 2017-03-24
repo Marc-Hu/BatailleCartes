@@ -19,8 +19,10 @@ public class Joueur {
 	 * @param nbPartieGagne	Nombre de parties gagnées par le joueur
 	 */
 	
-	public Joueur(String nomJoueur){
+	public Joueur(String nomJoueur, Main carteMain, Pile pileCarte){
 		this.nom= nomJoueur;
+		this.cartesEnMain=carteMain;
+		this.pileCartes=pileCarte;
 	}
 	
 	/**
