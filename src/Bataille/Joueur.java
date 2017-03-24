@@ -1,4 +1,5 @@
 package Bataille;
+import java.util.*;
 
 /**
  * Classe représentant le joueur
@@ -84,6 +85,25 @@ public class Joueur {
 	public String toString(){
 		String s = "Je suis le joueur "+this.nom+'.';
 		return s;
+	}
+	
+	/**
+	 * Méthode poserUneCarte qui va retirer une carte dans la main et l'ajouter dans la pile
+	 */
+	
+	public void poserUneCarte(){
+		Carte carteJouer = this.cartesEnMain.retirer();
+		this.pileCartes.ajouter(carteJouer);
+	}
+	
+	/**
+	 * Méthode recuperercarteSurPile qui va récupérer toutes les cartes dans la pile et les ajouter dans la Main
+	 */
+	
+	public void recupererCarteSurPile(){
+		Stack<Carte> cartesRecup = this.pileCartes.viderPile();
+		for (Carte carteAjout : cartesRecup)
+			this.cartesEnMain.ajouter(carteAjout);
 	}
 	
 }
