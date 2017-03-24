@@ -1,8 +1,14 @@
 package TestBataille;
 import Bataille.*;
+import ExceptionBatailles.*;
 
 public class TestPaquet {
 	public static void main(String[] args){
-		Paquet p = new Paquet(52);
+		try{
+			Paquet p = new Paquet(52);
+		}catch{
+			
+		}
+		
 	}
 }
