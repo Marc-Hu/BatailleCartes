@@ -34,9 +34,9 @@ public class Main {
 	 */
 	
 	public String toString(){
-		String s = "J'ai en Main toutes les cartes suivantes :\n";
+		String s = "J'ai en main les cartes suivantes :\n";
 		for (Carte carteAffiche : this.cartesMain)
-			s+=carteAffiche.toString();
+			s+=carteAffiche.toString()+'\n';
 		return s;
 	}
 	

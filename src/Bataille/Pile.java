@@ -25,7 +25,7 @@ public class Pile {
 		String str = new String();
 		str += "Contenu de la pile : \n";
 		for(Carte c : this.pile)
-			str += c.toString();
+			str += c.toString()+'\n';
 		
 		return str;	
 	}
