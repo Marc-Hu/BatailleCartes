@@ -47,7 +47,7 @@ public class Carte {
 	 * Retourne une chaîne de caractères contenant les informations de la Carte
 	 */
 	public String toString(){
-		return this.getValeur()+" de "+this.getCouleur()+'\n';
+		return this.getValeur()+" de "+this.getCouleur();
 	}
 
 	/**
