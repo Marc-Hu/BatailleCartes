@@ -11,16 +11,14 @@ import java.util.*;
 public class Paquet{
 	
 	private List<Carte> paquetCartes;
-	private HashSet<Main> mainsJoueurs;
 	
 /*Constructeur*/
 	/**
 	 * Construit une instance de paquet
 	 */
-	public Paquet(int nbCarte, HashSet<Main> lesMains) throws nombreCarteException{
+	public Paquet(int nbCarte) throws nombreCarteException{
 		if(nbCarte != 32 || nbCarte != 52) throw new nombreCarteException(nbCarte);
 		int minValue = (nbCarte == 32) ? 7 : 1;
-		this.mainsJoueurs = lesMains;
 		this.paquetCartes = new ArrayList<Carte>();
 		String couleur = new String();
 		// on génère les cartes.
@@ -64,15 +62,16 @@ public class Paquet{
 		Collections.shuffle(paquetCartes);
 	}
 	
-	// à voir pour la distribution
-	/*public void distribuer(){
-		int tailleMain = this.mainsJoueurs.size();
-		int i;
-		for(i=0; i<tailleMain; i++){
-			int j;
-			for(j=0; j<this.mainsJoueurs[i].size(); j++){
-				
-			}
+	/**
+	 * retourne la premiere carte du paquet et la supprime du paquet
+	 * @return
+	 */
+	public Carte distribuer(){
+		if(this.taille() > 0){ 
+			Carte c = this.paquetCartes.get(0);
+			this.paquetCartes.remove(0);
+			return c;
 		}
-	}*/
+		return null;
+	}
 }
