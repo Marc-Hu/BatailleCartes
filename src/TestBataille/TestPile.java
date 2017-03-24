@@ -1,5 +1,6 @@
 package TestBataille;
 import Bataille.*;
+import java.util.*;
 
 public class TestPile {
 	public static void main(String[] args){
@@ -9,7 +10,8 @@ public class TestPile {
 		System.out.println(pileDeMarc);
 		System.out.println("test de la méthode estVide");
 		System.out.println(pileDeMarc.estVide());
-		pileDeMarc.viderPile();
+		Stack<Carte> test = pileDeMarc.viderPile();
+		System.out.println(test);
 		System.out.println(pileDeMarc.estVide());
 		System.out.println("Test de la méthode taille");
 		pileDeMarc.ajouter(new Carte (10, "trefle"));
