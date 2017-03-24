@@ -1,6 +1,6 @@
 package ExceptionBatailles;
 
-public class nombreCarteException extends Exception{
+public class NombreCarteException extends Exception{
 	private int nbCartes;
 	
 	/**
@@ -8,7 +8,7 @@ public class nombreCarteException extends Exception{
 	 * @param nbC
 	 * @param message
 	 */
-	public nombreCarteException(int nbC){
+	public NombreCarteException(int nbC){
 		super("Le nombre de Carte est invalide.");
 		this.nbCartes = nbC;
 	}
