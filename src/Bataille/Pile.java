@@ -39,18 +39,10 @@ public class Pile {
 	}
 	
 	/**
-	 * Vérifie si la pile est vide.
-	 * @return True si la pile est vide sinon False 
-	 */
-	public boolean estVide(){
-		return this.pile.empty();
-	}
-	
-	/**
 	 * Vide la pile de carte
 	 * @return La copie de la pile supprimer
 	 */
-	public Stack<Carte> viderPile(){
+	public Stack<Carte> vider(){
 		Stack<Carte> tmp = new Stack<Carte>();
 		for (Carte c : this.pile)
 			tmp.add(c);
@@ -58,6 +50,22 @@ public class Pile {
 		return tmp;
 	}
 	
+	/**
+	 * Retourne la première carte de la pile sans la retirer 
+	 * @return La première carte de la pile
+	 */
+	public Carte premiereCarte(){
+		return this.pile.peek();
+	}
+	
+	/**
+	 * Vérifie si la pile est vide.
+	 * @return True si la pile est vide sinon False 
+	 */
+	public boolean estVide(){
+		return this.pile.empty();
+	}
+
 	/**
 	 * Retourne le nombre de cartes de la pile
 	 * @return Le nombre de cartes de la pile.

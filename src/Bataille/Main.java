@@ -17,15 +17,6 @@ public class Main {
 	public Main(){
 		this.cartesMain=new ArrayDeque<Carte>();
 	}
-	
-/*Getter*/
-	/** 
-	 * Retourne la main courante
-	 * @return La main courante
-	 */
-	public ArrayDeque<Carte> getMain(){
-		return this.cartesMain;
-	}
 
 /*Méthodes*/
 	/**

@@ -22,6 +22,12 @@ public class TestPartie {
 				System.out.println(joueurs[i].getNom()+" possède "+joueurs[i].getCartesEnMain().taille()+" cartes");
 				System.out.println(joueurs[i].getCartesEnMain());
 			}
+			
+			System.out.println("Tour 1");
+			
+			
+			
+			
 		}catch(NombreCarteException e){
 			System.out.println(e);
 		}

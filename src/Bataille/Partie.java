@@ -54,14 +54,8 @@ public class Partie {
 			int j = i%nbJoueurs;
 			this.joueurs[j].getCartesEnMain().ajouter(c);
 		}
-		/*Iterator<Carte> ite = this.paquet.getPaquet().iterator();
-		while(ite.hasNext()){
-			Carte c = ite.next();
-			
-			}
-		*/
 	}
-	
+
 //	public boolean estTerminer(){
 //		for(Joueur j: joueurs){
 //			if(j.nbCartes() != )
