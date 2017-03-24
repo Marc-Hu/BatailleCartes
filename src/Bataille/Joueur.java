@@ -16,12 +16,11 @@ public class Joueur {
 	/**
 	 * Constructeur de la classe Joueur qui a un nom est le nombre de parties gagnées.
 	 * @param nomJoueur Nom du Joueur
-	 * @param nbPartieGagne	Nombre de parties gagnées par le joueur
 	 */	
-	public Joueur(String nomJoueur, Main carteMain, Pile pileCarte){
+	public Joueur(String nomJoueur){
 		this.nom= nomJoueur;
-		this.cartesEnMain=carteMain;
-		this.pileCartes=pileCarte;
+		this.cartesEnMain=new Main();
+		this.pileCartes=new Pile();
 	}
 
 /*Getters*/

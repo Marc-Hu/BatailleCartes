@@ -1,6 +1,6 @@
 package TestBataille;
 import Bataille.*;
-import java.util.*;
+
 
 public class TestPile {
 	public static void main(String[] args){

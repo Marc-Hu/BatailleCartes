@@ -70,7 +70,7 @@ public class Paquet{
 	
 	/**
 	 * retourne la premiere carte du paquet et la supprime du paquet
-	 * @return
+	 * @return La première carte du paquet (ou null)
 	 */
 	public Carte retirer(){
 		if(this.taille() > 0){ 

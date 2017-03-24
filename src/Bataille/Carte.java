@@ -1,7 +1,5 @@
 package Bataille;
 
-import ExceptionBatailles.*;
-
 /**
  * Classe représentant des cartes de jeu
  * @version 1.0
@@ -20,11 +18,7 @@ public class Carte {
 	 * @param valeur		Valeur de la carte(De 2 à 14 avec 11=Valet, ..., 14=As)
 	 * @param nomFichier	Nom du fichier associé à l'image de la carte
 	 */
-	public Carte(int valeur, String couleur/**, String nomFichier**/) throws ValeurCarteException{
-		if(valeur < 2 || valeur > 14){
-			ValeurCarteException e = new ValeurCarteException(valeur, "Carte non valide");
-			throw e;
-		}
+	public Carte(int valeur, String couleur/**, String nomFichier**/){
 		this.valeur = valeur;
 		this.couleur = couleur;
 

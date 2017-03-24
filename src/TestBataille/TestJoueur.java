@@ -4,12 +4,11 @@ import Bataille.*;
 public class TestJoueur {
 	public static void main(String[] args){
 		System.out.println("Test du constructeur de la classe Joueur et test de la méthode ditBataille");
-		Main mainDeMarc = new Main();
-		mainDeMarc.ajouter(new Carte (8, "pique"));
-		mainDeMarc.ajouter(new Carte (9, "pique"));
-		mainDeMarc.ajouter(new Carte (6, "pique"));
-		Pile pileDeMarc = new Pile();
-		Joueur marc = new Joueur("Marc", mainDeMarc, pileDeMarc);
+		Joueur marc = new Joueur("Marc");
+		marc.getCartesEnMain().ajouter(new Carte (8, "pique"));
+		marc.getCartesEnMain().ajouter(new Carte (9, "pique"));
+		marc.getCartesEnMain().ajouter(new Carte (6, "pique"));
+
 		System.out.println(marc);
 		marc.ditBataille();
 		System.out.println("Test de la méthode poserUneCarte");

@@ -1,5 +1,5 @@
 package Bataille;
-import java.util.*;
+
 
 /**
  * Classe de gestion d'une partie
@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class Partie {
 	
-	private ArrayList<Joueur> joueurs;
+	private Joueur[] joueurs;
 	private Paquet paquet;
 	
 /*Constructeur*/
@@ -17,9 +17,15 @@ public class Partie {
 	 * @param joueurs est un tableau de joueur
 	 * @param paquet
 	 */
-	public Partie(ArrayList<Joueur> joueurs, Paquet paquet){
+	public Partie(Joueur[] joueurs, Paquet paquet){
 		this.joueurs = joueurs;
 		this.paquet = paquet;
+	}
+	
+/*Getters*/
+	
+	public Paquet getPaquet(){
+		return this.paquet;
 	}
 	
 /*Méthodes*/
@@ -41,12 +47,12 @@ public class Partie {
 	 * Distribue les cartes du Paquet
 	 */
 	public void distribuerPaquet(){
-		int nbJoueurs = this.joueurs.size();
+		int nbJoueurs = this.joueurs.length;
 		int nbCartes = this.paquet.taille();
 		for(int i=0; i<nbCartes; i++){
 			Carte c = this.paquet.retirer();
 			int j = i%nbJoueurs;
-			this.joueurs.get(j).getPileCartes().ajouter(c);
+			this.joueurs[j].getCartesEnMain().ajouter(c);
 		}
 		/*Iterator<Carte> ite = this.paquet.getPaquet().iterator();
 		while(ite.hasNext()){

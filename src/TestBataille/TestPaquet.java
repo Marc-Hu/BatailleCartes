@@ -14,14 +14,16 @@ public class TestPaquet {
 			
 			// On retire la premier carte
 			Carte c = p.retirer();
-			if(c == null) System.out.println("Aucun carte n'est retirer.");
-			else System.out.println("La carte : "+ c +" est retirer du paquet");
+			if(c == null) System.out.println("Aucun carte n'est retirée.");
+			else System.out.println("La carte : "+ c +" est retirée du paquet");
 			
 			// On vérifie la taille du paquet
 			if(p.taille() != 31 && p.taille() != 51) System.out.println("la taille est invalide : "+p.taille());
 			else System.out.println("La taille est valide : "+p.taille());
+			System.out.println(p);
 		}catch(NombreCarteException e){
 			System.out.println(e);
+
 		}
 	}
 }
