@@ -1,6 +1,7 @@
-package Bataille;
+package TestBataille;
+import Bataille.*;
 
-public class testPile {
+public class TestPile {
 	public static void main(String[] args){
 		System.out.println("Test du constructeur de la classe Pile et de la méthode d'ajout de carte dans la pile");
 		Pile pileDeMarc = new Pile();
