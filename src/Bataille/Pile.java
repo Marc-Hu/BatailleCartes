@@ -51,7 +51,9 @@ public class Pile {
 	 * @return La copie de la pile supprimer
 	 */
 	public Stack<Carte> viderPile(){
-		Stack<Carte> tmp = this.pile;
+		Stack<Carte> tmp = new Stack<Carte>();
+		for (Carte c : this.pile)
+			tmp.add(c);
 		this.pile.removeAllElements();
 		return tmp;
 	}
