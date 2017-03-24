@@ -68,6 +68,10 @@ public class Paquet{
 		Collections.shuffle(paquetCartes);
 	}
 	
+	public boolean contient(Carte c){
+		return this.paquetCartes.contains(c);
+	}
+	
 	/**
 	 * retourne la premiere carte du paquet et la supprime du paquet
 	 * @return La première carte du paquet (ou null)

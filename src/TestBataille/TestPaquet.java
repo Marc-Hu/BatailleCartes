@@ -20,7 +20,11 @@ public class TestPaquet {
 			// On vérifie la taille du paquet
 			if(p.taille() != 31 && p.taille() != 51) System.out.println("la taille est invalide : "+p.taille());
 			else System.out.println("La taille est valide : "+p.taille());
-			System.out.println(p);
+			
+			// On vérifie que l'on a bien enlevé la bonne carte
+			if(p.contient(c)) System.out.println("Le paquet contient toujours la carte.");
+			else System.out.println("La carte à bien été retirer");
+			
 		}catch(NombreCarteException e){
 			System.out.println(e);
 
