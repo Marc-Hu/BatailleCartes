@@ -17,8 +17,8 @@ public class Paquet{
 	 * Construit une instance de paquet
 	 */
 	public Paquet(int nbCarte) throws NombreCarteException{
-		if(nbCarte != 32 || nbCarte != 52) throw new NombreCarteException(nbCarte);
-		int minValue = (nbCarte == 32) ? 7 : 1;
+		if(nbCarte != 32 && nbCarte != 52) throw new NombreCarteException(nbCarte);
+		int minValue = (nbCarte == 32) ? 7 : 2;
 		this.paquetCartes = new ArrayList<Carte>();
 		String couleur = new String();
 		// on génère les cartes.
@@ -43,7 +43,7 @@ public class Paquet{
 		String str = new String();
 		str += "Contenu du paquet de cartes : \n";
 		for(Carte c : this.paquetCartes)
-			str += c.toString();
+			str += c.toString()+"\n";
 		
 		return str;	
 	}
@@ -56,9 +56,10 @@ public class Paquet{
 		return this.paquetCartes.size();
 	}
 	
-	public List<Carte> getPaquet(){
-		return this.paquetCartes;
-	}
+
+//	public List<Carte> getPaquet(){
+//		return this.paquetCartes;
+//	}
 	
 	/**
 	 * Melange le paquet de Carte
