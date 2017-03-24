@@ -24,6 +24,14 @@ public class TestPartie {
 			}
 			
 			System.out.println("Tour 1");
+			for(Joueur j : joueurs)
+				j.poserUneCarte();
+			
+			for(int i=0; i<4; i++){
+				System.out.println(joueurs[i].getPileCartes());
+			}
+			
+			System.out.println(bataille1.laPlusForte());
 			
 			
 			
