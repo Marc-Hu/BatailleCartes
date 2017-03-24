@@ -18,10 +18,10 @@ public class Carte {
 	 * @param valeur		Valeur de la carte(De 2 à 14 avec 11=Valet, ..., 14=As)
 	 * @param nomFichier	Nom du fichier associé à l'image de la carte
 	 */
-	public Carte(String couleur, int valeur, String nomFichier){
+	public Carte(String couleur, int valeur/**, String nomFichier**/){
 		this.couleur = couleur;
 		this.valeur = valeur;
-		this.nomFichier = nomFichier;
+		//this.nomFichier = nomFichier;
 	}
 	
 /*Getters*/
