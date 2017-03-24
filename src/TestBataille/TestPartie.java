@@ -8,18 +8,20 @@ public class TestPartie {
 	public static void main(String[] args) {
 		
 		try{
-			Paquet jeu32cartes = new Paquet(32);
-			Joueur[] joueurs = new Joueur[2];
+			Paquet jeu52cartes = new Paquet(52);
+			Joueur[] joueurs = new Joueur[4];
 			joueurs[0] = new Joueur("Marc");
 			joueurs[1] = new Joueur("Steeve");
+			joueurs[2] = new Joueur("Tony");
+			joueurs[3] = new Joueur("Farida");
 			
-			Partie bataille1 = new Partie(joueurs, jeu32cartes);
+			Partie bataille1 = new Partie(joueurs, jeu52cartes);
 			System.out.println(bataille1.getPaquet());
 			bataille1.distribuerPaquet();
-			System.out.println("Marc possède "+joueurs[0].getCartesEnMain().taille()+" cartes");
-			System.out.println("Main de Marc : \n"+joueurs[0].getCartesEnMain());
-			System.out.println("Steeve possède "+joueurs[1].getCartesEnMain().taille()+" cartes");
-			System.out.println("Main de Steeve : \n"+joueurs[1].getCartesEnMain());
+			for(int i=0; i<4; i++){
+				System.out.println(joueurs[i].getNom()+" possède "+joueurs[i].getCartesEnMain().taille()+" cartes");
+				System.out.println(joueurs[i].getCartesEnMain());
+			}
 		}catch(NombreCarteException e){
 			System.out.println(e);
 		}
