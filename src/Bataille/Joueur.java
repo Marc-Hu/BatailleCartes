@@ -46,7 +46,7 @@ public class Joueur {
 	 */
 	
 	public int getNbCartesEnMain(){
-		return this.cartesEnMain.getNbCartesMain();
+		return this.cartesEnMain.taille();
 	}
 	
 	/**
@@ -72,8 +72,8 @@ public class Joueur {
 	 * Méthode qui va afficher bataille.
 	 */
 	
-	public void direBataille(){
-		System.out.println("BATAILLE");
+	public void ditBataille(){
+		System.out.println(this.nom+" crie : BATAILLE");
 	}
 	
 	/**
