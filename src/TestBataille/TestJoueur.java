@@ -14,16 +14,16 @@ public class TestJoueur {
 		marc.ditBataille();
 		System.out.println("Test de la méthode poserUneCarte");
 		marc.poserUneCarte();
-		if (marc.getNbCartesEnMain()==2 && marc.getNbCartesPile()==1)
+		if (marc.getCartesEnMain().taille()==2 && marc.getPileCartes().taille()==1)
 			System.out.println("Marc a bien posé une carte sur sa pile et possède 2 cartes en main et une carte sur sa pile.");
 		else
 			System.out.println("Erreur! Marc a posé une carte sur sa pile et il a donc 2 cartes en main et une carte sur sa pile.");
 		System.out.println("Test de la méthode recupererCartesSurPile");
-		marc.recupererCarteSurPile();
-		if (marc.getNbCartesEnMain()==3 && marc.getNbCartesPile()==0)
+		marc.recupererCartes(marc.getPileCartes());
+		if (marc.getCartesEnMain().taille()==3 && marc.getPileCartes().taille()==0)
 			System.out.println("Marc à bien récupéré toutes les cartes sur sa pile et possède 3 cartes en main et 0 sur sa pile.");
 		else
 			System.out.println("Erreur! Marc a récupéré toutes les cartes sur sa pile et possède donc 3 cartes en main et 0 sur sa pile.");
-		System.out.println(marc.getNbCartesEnMain()+" et "+marc.getNbCartesPile());
+		System.out.println(marc.getCartesEnMain().taille()+" et "+marc.getPileCartes().taille());
 	}
 }

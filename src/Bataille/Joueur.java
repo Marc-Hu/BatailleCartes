@@ -9,7 +9,6 @@ import java.util.*;
 
 public class Joueur {
 	private String nom;
-	//private int nbPartiesGagnees;
 	private Main cartesEnMain;
 	private Pile pileCartes;
 	
@@ -35,49 +34,22 @@ public class Joueur {
 	}
 	
 	/**
-	 * Méthode get qui renvoie le nombre de parties gagnées par le joueur
-	 * @return Le nombre de parties gagnées
+	 * Méthode get qui renvoie la main du joueur
+	 * @return La main du jouer
 	 */
-	
-	/*
-	public int getNbPartieGagne(){
-		return this.nbPartiesGagnees;
-	}
-	*/
-	
-	/**
-	 * Méthode get qui renvoie le nombre de cartes en Main
-	 * @return Nombre de carte en Main
-	 */
-	public int getNbCartesEnMain(){
-		return this.cartesEnMain.taille();
+	public Main getCartesEnMain(){
+		return this.cartesEnMain;
 	}
 	
 	/**
-	 * Méthode get qui renvoie le nombre de cartes sur la pile
-	 * @return Nombre de carte sur la pile
+	 * Méthode get qui renvoie la pile du jouer
+	 * @return la pile du joueur
 	 */
-	public int getNbCartesPile(){
-		return this.pileCartes.taille();
+	public Pile getPileCartes(){
+		return this.pileCartes;
 	}
 	
 /*Méthodes*/
-	/**
-	 * Méthode set qui va incrémenter le nombre de parties gagnées par le joueur
-	 */
-	/*
-	public void setNbPartieGagne(){
-		this.nbPartiesGagnees++;
-	}
-	*/
-	
-	/**
-	 * Méthode qui va afficher bataille.
-	 */
-	public void ditBataille(){
-		System.out.println(this.nom+" crie : BATAILLE");
-	}
-	
 	/**
 	 * Méthode toString de la classe Joueur.
 	 * @return Le toString de la classe Joueur.
@@ -86,20 +58,26 @@ public class Joueur {
 		String s = "Je suis le joueur "+this.nom+'.';
 		return s;
 	}
-	
+
 	/**
-	 * Méthode poserUneCarte qui va retirer une carte dans la main et l'ajouter dans la pile
+	 * Méthode qui va afficher bataille.
 	 */
-	public void poserUneCarte(){
-		Carte carteJouer = this.cartesEnMain.retirer();
-		this.pileCartes.ajouter(carteJouer);
+	public void ditBataille(){
+		System.out.println(this.nom+" crie : BATAILLE");
 	}
 	
 	/**
-	 * Méthode recuperercarteSurPile qui va récupérer toutes les cartes dans la pile et les ajouter dans la Main
+	 * Méthode poserUneCarte qui va retirer une carte dans la main et l'ajouter dans sa pile
 	 */
-	public void recupererCarteSurPile(){
-		Stack<Carte> cartesRecup = this.pileCartes.viderPile();
+	public void poserUneCarte(){
+		this.pileCartes.ajouter(this.cartesEnMain.retirer());
+	}
+	
+	/**
+	 * Méthode recupererCartes qui va récupérer toutes les cartes dans la pile et les ajouter dans la Main
+	 */
+	public void recupererCartes(Pile p){
+		Stack<Carte> cartesRecup = p.viderPile();
 		for (Carte carteAjout : cartesRecup)
 			this.cartesEnMain.ajouter(carteAjout);
 	}

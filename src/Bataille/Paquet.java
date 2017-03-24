@@ -31,6 +31,7 @@ public class Paquet{
 				this.paquetCartes.add(new Carte(valeur, couleur/*, valeur+"-"+couleur.".png"*/));
 			}
 		}
+		this.melanger();
 	}
 	
 /*Méthodes*/
@@ -58,7 +59,7 @@ public class Paquet{
 	/**
 	 * Melange le paquet de Carte
 	 */
-	public void melanger(){
+	private void melanger(){
 		Collections.shuffle(paquetCartes);
 	}
 	
@@ -66,7 +67,7 @@ public class Paquet{
 	 * retourne la premiere carte du paquet et la supprime du paquet
 	 * @return
 	 */
-	public Carte distribuer(){
+	public Carte retirer(){
 		if(this.taille() > 0){ 
 			Carte c = this.paquetCartes.get(0);
 			this.paquetCartes.remove(0);
