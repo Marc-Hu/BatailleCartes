@@ -56,6 +56,16 @@ public class Partie {
 		}
 	}
 
+	public Carte laPlusForte(){
+		Carte cMax = this.joueurs[0].getPileCartes().premiereCarte();
+		for(int i=1; i < this.joueurs.length; i++){
+			Carte ci = this.joueurs[i].getPileCartes().premiereCarte();
+			if(ci.estPlusForte(cMax))
+				cMax = ci;
+		}
+
+		return cMax;
+	}
 //	public boolean estTerminer(){
 //		for(Joueur j: joueurs){
 //			if(j.nbCartes() != )

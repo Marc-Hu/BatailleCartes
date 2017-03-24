@@ -56,11 +56,6 @@ public class Paquet{
 		return this.paquetCartes.size();
 	}
 	
-
-//	public List<Carte> getPaquet(){
-//		return this.paquetCartes;
-//	}
-	
 	/**
 	 * Melange le paquet de Carte
 	 */
