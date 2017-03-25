@@ -63,6 +63,11 @@ public class Paquet{
 		Collections.shuffle(paquetCartes);
 	}
 	
+	/**
+	 * Permet de de déterminer si une carte est bien contenu dans le paquet
+	 * @param c
+	 * @return
+	 */
 	public boolean contient(Carte c){
 		return this.paquetCartes.contains(c);
 	}
