@@ -64,6 +64,15 @@ public class Paquet{
 	}
 	
 	/**
+	 * Permet de de déterminer si une carte est bien contenu dans le paquet
+	 * @param c
+	 * @return
+	 */
+	public boolean contient(Carte c){
+		return this.paquetCartes.contains(c);
+	}
+	
+	/**
 	 * retourne la premiere carte du paquet et la supprime du paquet
 	 * @return La première carte du paquet (ou null)
 	 */
