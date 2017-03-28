@@ -22,6 +22,15 @@ public class Partie {
 		this.paquet = paquet;
 	}
 	
+	/**
+	 * Créer une instance de partie, le paquet a 52 cartes par défaut
+	 * @param joueurs est un tableau de joueur
+	 */
+	public Partie(Joueur[] joueurs){
+		this.joueurs = joueurs;
+		this.paquet = new Paquet(52);
+	}
+	
 /*Getters*/
 	
 	public Paquet getPaquet(){
@@ -66,11 +75,19 @@ public class Partie {
 
 		return cMax;
 	}
-//	public boolean estTerminer(){
-//		for(Joueur j: joueurs){
-//			if(j.nbCartes() != )
-//		}
-//	}
+	
+	/**
+	 * Vérifie si la partie est finie ou pas
+	 * @return True si la partie est finie
+	 */
+	public boolean finie(){
+		for(Joueur j : this.joueurs){
+			if(j.getCartesEnMain().taille()==0)
+				return true;
+		}
+		return false;
+	}
+
 	
 	
 }

@@ -1,5 +1,5 @@
 package Bataille;
-import ExceptionBatailles.*;
+
 import java.util.*;
 
 /**
@@ -16,8 +16,8 @@ public class Paquet{
 	/**
 	 * Construit une instance de paquet
 	 */
-	public Paquet(int nbCarte) throws NombreCarteException{
-		if(nbCarte != 32 && nbCarte != 52) throw new NombreCarteException(nbCarte);
+	public Paquet(int nbCarte) /*throws NombreCarteException*/{
+		/*if(nbCarte != 32 && nbCarte != 52) throw new NombreCarteException(nbCarte);*/
 		int minValue = (nbCarte == 32) ? 7 : 2;
 		this.paquetCartes = new ArrayList<Carte>();
 		String couleur = new String();

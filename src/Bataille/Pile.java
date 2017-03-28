@@ -1,5 +1,5 @@
 package Bataille;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Classe de gestion d'une pile de Cartes
@@ -40,14 +40,14 @@ public class Pile {
 	
 	/**
 	 * Vide la pile de carte
-	 * @return La copie de la pile supprimer
+	 * @return Une liste des cartes récupérées
 	 */
 	public Stack<Carte> vider(){
-		Stack<Carte> tmp = new Stack<Carte>();
+		Stack<Carte> cartes = new Stack<Carte>();
 		for (Carte c : this.pile)
-			tmp.add(c);
+			cartes.add(c);
 		this.pile.removeAllElements();
-		return tmp;
+		return cartes;
 	}
 	
 	/**
