@@ -11,6 +11,7 @@ public class Partie {
 	private Joueur[] joueurs;
 	private Paquet paquet;
 	
+	
 /*Constructeur*/
 	/**
 	 * Créer une instance de partie 
@@ -29,13 +30,19 @@ public class Partie {
 	public Partie(Joueur[] joueurs){
 		this.joueurs = joueurs;
 		this.paquet = new Paquet(52);
+		
 	}
 	
 /*Getters*/
-	
+	/**
+	 * Retourne le paquet initilialisé dans la partie en cours
+	 * @return
+	 */
 	public Paquet getPaquet(){
 		return this.paquet;
 	}
+	
+	
 	
 /*Méthodes*/
 	
@@ -64,7 +71,11 @@ public class Partie {
 			this.joueurs[j].getCartesEnMain().ajouter(c);
 		}
 	}
-
+	
+	/**
+	 * Renvoie la carte la plus forte parmi les cartes posées
+	 * @return
+	 */
 	public Carte laPlusForte(){
 		Carte cMax = this.joueurs[0].getPileCartes().premiereCarte();
 		for(int i=1; i < this.joueurs.length; i++){

@@ -11,6 +11,8 @@ public class Joueur {
 	private String nom;
 	private Main cartesEnMain;
 	private Pile pileCartes;
+	private boolean estDansPartie;
+	private boolean estDansBataille;
 	
 /*Constructeur*/
 	/**
@@ -21,6 +23,8 @@ public class Joueur {
 		this.nom= nomJoueur;
 		this.cartesEnMain=new Main();
 		this.pileCartes=new Pile();
+		this.estDansPartie = true;
+		this.estDansBataille = false;
 	}
 
 /*Getters*/
@@ -46,6 +50,22 @@ public class Joueur {
 	 */
 	public Pile getPileCartes(){
 		return this.pileCartes;
+	}
+	
+	/**
+	 * Retourne la valeur de l'attribut estDansPartie
+	 * @return
+	 */
+	public boolean getEstDansPartie(){
+		return this.estDansPartie;
+	}
+	
+	/**
+	 * Retourne la valeur de l'attribut estDansBataille
+	 * @return
+	 */
+	public boolean getEstDansBataille(){
+		return this.estDansBataille;
 	}
 	
 /*Méthodes*/
