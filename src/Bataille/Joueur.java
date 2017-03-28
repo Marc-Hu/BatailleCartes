@@ -67,9 +67,13 @@ public class Joueur {
 	
 	/**
 	 * Méthode poserUneCarte qui va retirer une carte dans la main et l'ajouter dans sa pile
+	 * @return La carte posée
 	 */
-	public void poserUneCarte(){
-		this.pileCartes.ajouter(this.cartesEnMain.retirer());
+	public Carte poserUneCarte(){
+		Carte c = this.cartesEnMain.retirer();
+		this.pileCartes.ajouter(c);
+		
+		return c;
 	}
 	
 	/**

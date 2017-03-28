@@ -35,7 +35,6 @@ public class Pile {
 	 * @param c		Carte à ajouter
 	 */
 	public void ajouter(Carte c){
-		if(this.pile.contains(c))
 			this.pile.push(c);
 	}
 	

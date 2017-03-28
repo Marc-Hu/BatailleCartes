@@ -1,6 +1,6 @@
 package Bataille;
 
-import java.util.*;
+//import java.util.*;
 
 public class BatailleMain {
 
@@ -40,6 +40,7 @@ public class BatailleMain {
 		j2.getCartesEnMain().ajouter(new Carte(10, "Pique"));
 		*/
 		int nbTours = 0;
+		Carte[] cartesPosees = new Carte[joueurs.length];
 		do{
 			System.out.println("Tour n°"+(nbTours+1));
 			
@@ -47,15 +48,15 @@ public class BatailleMain {
 				System.out.println(j.getCartesEnMain());
 
 			for(int i=0; i<joueurs.length; i++){
-				joueurs[i].poserUneCarte();
-				System.out.println(joueurs[i].getNom()+" a posé "+joueurs[i].getPileCartes().premiereCarte());
+				cartesPosees[i] = joueurs[i].poserUneCarte();
+				System.out.println(joueurs[i].getNom()+" a posé "+cartesPosees[i]);
 			}
-			
-			if(j1.getPileCartes().premiereCarte().estPlusForte(j2.getPileCartes().premiereCarte())){
+			System.out.println(joueurs[0].getPileCartes());
+			if(cartesPosees[0].estPlusForte(cartesPosees[1])){
 				for(Joueur j : joueurs)
 					j1.recupererCartes(j.getPileCartes());
 				System.out.println(j1.getNom()+" récupère les cartes du plateau");
-			}else if(j2.getPileCartes().premiereCarte().estPlusForte(j1.getPileCartes().premiereCarte())){
+			}else if(cartesPosees[1].estPlusForte(cartesPosees[0])){
 				for(Joueur j : joueurs)
 					j2.recupererCartes(j.getPileCartes());
 				System.out.println(j2.getNom()+" récupère les cartes du plateau");

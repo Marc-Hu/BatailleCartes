@@ -1,7 +1,6 @@
 package TestBataille;
 
 import Bataille.*;
-import ExceptionBatailles.*;
 
 public class TestPartie {
 
