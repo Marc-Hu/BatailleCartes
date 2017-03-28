@@ -1,6 +1,7 @@
 package TestBataille;
-import Bataille.*;
 
+import Bataille.*;
+import java.util.*;
 
 public class TestPile {
 	public static void main(String[] args){
@@ -17,7 +18,8 @@ public class TestPile {
 			System.out.println("Test réussi! La pile de Marc contient des cartes");
 		else
 			System.out.println("Erreur! La pile de Marc n'est pas vide.");
-		pileDeMarc.vider();
+		Stack<Carte> cartesRetirees = pileDeMarc.vider();
+		System.out.println("Cartes retirées : \n"+cartesRetirees);
 		if (pileDeMarc.estVide())
 			System.out.println("Test réussi! La pile de Marc est vide.");
 		else
