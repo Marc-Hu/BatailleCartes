@@ -80,7 +80,8 @@ public class Joueur {
 	 * Méthode recupererCartes qui va récupérer toutes les cartes dans la pile et les ajouter dans la Main
 	 */
 	public void recupererCartes(Pile p){
-		Stack<Carte> cartesRecup = p.vider();
+		ArrayList<Carte> cartesRecup = p.vider();
+		Collections.shuffle(cartesRecup);
 		for (Carte carteAjout : cartesRecup)
 			this.cartesEnMain.ajouter(carteAjout);
 	}

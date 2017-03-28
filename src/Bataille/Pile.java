@@ -42,8 +42,8 @@ public class Pile {
 	 * Vide la pile de carte
 	 * @return Une liste des cartes récupérées
 	 */
-	public Stack<Carte> vider(){
-		Stack<Carte> cartes = new Stack<Carte>();
+	public ArrayList<Carte> vider(){
+		ArrayList<Carte> cartes = new ArrayList<Carte>();
 		for (Carte c : this.pile)
 			cartes.add(c);
 		this.pile.removeAllElements();
