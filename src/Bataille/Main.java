@@ -44,7 +44,10 @@ public class Main {
 	 * @return La carte au dessus de la main
 	 */
 	public Carte retirer(){
-		return this.cartesMain.pop();
+		if(this.cartesMain.size() >= 1)
+			return this.cartesMain.pop();
+		
+		return null;
 	}
 	
 	/**

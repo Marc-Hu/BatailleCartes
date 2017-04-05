@@ -110,9 +110,12 @@ public class Joueur {
 	 */
 	public Carte poserUneCarte(){
 		Carte c = this.cartesEnMain.retirer();
-		this.pileCartes.ajouter(c);
+		if(c != null){
+			this.pileCartes.ajouter(c);
+			return c;
+		}
 		
-		return c;
+		return null;
 	}
 	
 	/**

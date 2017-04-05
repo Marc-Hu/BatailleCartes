@@ -129,11 +129,15 @@ public class Partie {
 	 * @return True si la partie est finie
 	 */
 	public boolean finie(){
+		int nbJoueursDansPartie = 0;
 		for(Joueur j : this.joueurs){
-			if(j.getCartesEnMain().taille()==0)
-				return true;
+			if(j.getEstDansPartie())
+				nbJoueursDansPartie += 1;
 		}
-		return false;
+		if(nbJoueursDansPartie > 1)
+			return false;
+		
+		return true;
 	}
 
 	
