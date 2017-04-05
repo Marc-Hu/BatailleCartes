@@ -12,7 +12,7 @@ public class TestPartie {
 		joueurs[0] = new Joueur("Marc");
 		joueurs[1] = new Joueur("Steeve");
 		joueurs[2] = new Joueur("Tony");
-		joueurs[3] = new Joueur("Farida");
+		joueurs[3] = new Joueur("Alice");
 		
 		Partie bataille1 = new Partie(joueurs, jeu52cartes);
 		System.out.println(bataille1.getPaquet());

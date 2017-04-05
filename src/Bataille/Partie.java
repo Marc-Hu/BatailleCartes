@@ -41,8 +41,7 @@ public class Partie {
 	public Paquet getPaquet(){
 		return this.paquet;
 	}
-	
-	
+
 	
 /*Méthodes*/
 	
@@ -77,14 +76,52 @@ public class Partie {
 	 * @return
 	 */
 	public Carte laPlusForte(){
-		Carte cMax = this.joueurs[0].getPileCartes().premiereCarte();
+		Carte cMax = null;
+		for(Joueur j : this.joueurs){
+			if(j.getEstDansBataille()){
+				cMax = j.getPileCartes().premiereCarte();
+				break;
+			}
+		}
 		for(int i=1; i < this.joueurs.length; i++){
-			Carte ci = this.joueurs[i].getPileCartes().premiereCarte();
-			if(ci.estPlusForte(cMax))
-				cMax = ci;
+			if(this.joueurs[i].getEstDansBataille()){
+				Carte ci = this.joueurs[i].getPileCartes().premiereCarte();
+				if(ci.estPlusForte(cMax))
+					cMax = ci;
+			}
 		}
 
 		return cMax;
+	}
+	
+	/**
+	 * 
+	 */
+	public int joueursDansBataille(Carte c){
+		int somme = 0;
+		for(Joueur j : this.joueurs){
+			if(j.getEstDansBataille()){
+				if(j.getPileCartes().premiereCarte().aMemeValeur(c))
+					somme += 1;
+				else
+					j.setEstDansBataille(false);
+			}
+		}
+		return somme;
+	}
+	
+	/**
+	 * 
+	 * @param c
+	 * @return
+	 */
+	public Joueur gagnantTour(Carte c){
+		for(Joueur j : this.joueurs){
+			if(j.getEstDansPartie() && j.getPileCartes().premiereCarte().aMemeValeur(c))
+				return j;
+		}
+		
+		return null;
 	}
 	
 	/**

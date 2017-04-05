@@ -24,7 +24,7 @@ public class Joueur {
 		this.cartesEnMain=new Main();
 		this.pileCartes=new Pile();
 		this.estDansPartie = true;
-		this.estDansBataille = false;
+		this.estDansBataille = true;
 	}
 
 /*Getters*/
@@ -66,6 +66,25 @@ public class Joueur {
 	 */
 	public boolean getEstDansBataille(){
 		return this.estDansBataille;
+	}
+	
+	
+/*Setters*/
+	
+	/**
+	 * Modifie la valeur de estDansPartie
+	 * @param b		True ou False
+	 */
+	public void setEstDansPartie(boolean b){
+		this.estDansPartie=b;
+	}
+	
+	/**
+	 * Modifie la valeur de estDansBataille
+	 * @param b		True ou False
+	 */
+	public void setEstDansBataille(boolean b){
+		this.estDansBataille=b;
 	}
 	
 /*Méthodes*/

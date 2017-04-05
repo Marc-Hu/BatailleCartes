@@ -8,16 +8,15 @@ public class BatailleMain {
 
 		Joueur j1 = new Joueur("j1");
 		Joueur j2 = new Joueur("j2");
-		Paquet jeu32Cartes = new Paquet(32);
+		Paquet jeuCartes = new Paquet(52);
 	
 		Joueur[] joueurs = new Joueur[2];
 		joueurs[0] = j1;
 		joueurs[1] = j2;
 
-		Partie bataille = new Partie(joueurs, jeu32Cartes);
-		bataille.distribuerPaquet();
+		Partie bataille = new Partie(joueurs);
 
-/*
+
 		j1.getCartesEnMain().ajouter(new Carte(10, "Pique"));
 		j1.getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
 		j1.getCartesEnMain().ajouter(new Carte(7, "Coeur"));
@@ -26,7 +25,7 @@ public class BatailleMain {
 		j2.getCartesEnMain().ajouter(new Carte(11, "Pique"));
 		j2.getCartesEnMain().ajouter(new Carte(8, "Pique"));
 		j2.getCartesEnMain().ajouter(new Carte(7, "Trèfle"));
-*/
+
 /*
 		j1.getCartesEnMain().ajouter(new Carte(12, "Trèfle"));
 		j1.getCartesEnMain().ajouter(new Carte(10, "Trèfle"));
@@ -57,10 +56,45 @@ public class BatailleMain {
 			}
 
 			for(int i=0; i<joueurs.length; i++){
-				cartesPosees[i] = joueurs[i].poserUneCarte();
-				System.out.println(joueurs[i].getNom()+" a posé "+cartesPosees[i]);
+				if(joueurs[i].getEstDansPartie()){
+					cartesPosees[i] = joueurs[i].poserUneCarte();
+					System.out.println(joueurs[i].getNom()+" a posé "+cartesPosees[i]);
+				}
 			}
-
+			
+			Carte carteLaPlusGrande = bataille.laPlusForte();
+			int nbJoueursDansBataille = bataille.joueursDansBataille(carteLaPlusGrande);
+			
+			if(nbJoueursDansBataille > 1){
+				do{
+					for(Joueur j : joueurs){
+						if(j.getEstDansBataille()){
+							j.poserUneCarte();
+							j.poserUneCarte();
+						}
+						carteLaPlusGrande = bataille.laPlusForte();
+						nbJoueursDansBataille = bataille.joueursDansBataille(carteLaPlusGrande);
+					}
+				}while(nbJoueursDansBataille > 1);
+			}
+			
+			Joueur gagnantTour = bataille.gagnantTour(carteLaPlusGrande);
+			
+			for(Joueur j : joueurs){
+				if(j.getEstDansPartie())
+					gagnantTour.recupererCartes(j.getPileCartes());
+			}
+			
+			for(Joueur j : joueurs){
+				if(j.getEstDansPartie() && j.getCartesEnMain().taille() == 0)
+					j.setEstDansPartie(false);
+			}
+			
+			for(Joueur j : joueurs){
+				if(j.getEstDansPartie())
+					j.setEstDansBataille(true);
+			}
+/*
 			if(cartesPosees[0].estPlusForte(cartesPosees[1])){
 				for(Joueur j : joueurs)
 					j1.recupererCartes(j.getPileCartes());
@@ -76,7 +110,7 @@ public class BatailleMain {
 					System.out.println(joueurs[i].getPileCartes());
 				}
 			}
-		
+*/	
 			nbTours+=1;
 			System.out.println("*****************************************");
 		}while(!bataille.finie());
