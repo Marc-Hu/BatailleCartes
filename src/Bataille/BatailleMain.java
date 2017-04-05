@@ -55,9 +55,12 @@ public class BatailleMain {
 			System.out.println("Tour n°"+(nbTours+1));
 			
 			for(Joueur j : joueurs){
+				if(j.getEstDansPartie()){
 				System.out.println(j.getNom()+" : ");
 				System.out.println("Nombre de cartes en main : "+j.getCartesEnMain().taille());
 				System.out.println(j.getCartesEnMain());
+				}else
+					System.out.println(j.getNom()+" a perdu");
 			}
 
 			for(Joueur j :joueurs){
