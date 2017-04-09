@@ -55,7 +55,10 @@ public class Pile {
 	 * @return La première carte de la pile
 	 */
 	public Carte premiereCarte(){
-		return this.pile.peek();
+		if(this.pile.size() >= 1)
+			return this.pile.peek();
+		
+		return null;
 	}
 	
 	/**

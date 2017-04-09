@@ -11,14 +11,14 @@ public class BatailleMain {
 		Joueur j3 = new Joueur("j3");
 		Paquet jeuCartes = new Paquet(52);
 	
-		Joueur[] joueurs = new Joueur[3];
+		Joueur[] joueurs = new Joueur[2];
 		joueurs[0] = j1;
 		joueurs[1] = j2;
-		joueurs[2] = j3;
+		//joueurs[2] = j3;
 
 		Partie bataille = new Partie(joueurs);
 
-
+/*
 		j1.getCartesEnMain().ajouter(new Carte(10, "Pique"));
 		j1.getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
 		j1.getCartesEnMain().ajouter(new Carte(7, "Coeur"));
@@ -31,15 +31,15 @@ public class BatailleMain {
 		j3.getCartesEnMain().ajouter(new Carte(11, "Pique"));
 		j3.getCartesEnMain().ajouter(new Carte(8, "Pique"));
 		j3.getCartesEnMain().ajouter(new Carte(14, "Trèfle"));
+*/
 
-/*
 		j1.getCartesEnMain().ajouter(new Carte(12, "Trèfle"));
 		j1.getCartesEnMain().ajouter(new Carte(10, "Trèfle"));
 		j1.getCartesEnMain().ajouter(new Carte(14, "Coeur"));
 		j2.getCartesEnMain().ajouter(new Carte(12, "Pique"));
 		j2.getCartesEnMain().ajouter(new Carte(8, "Pique"));
 		j2.getCartesEnMain().ajouter(new Carte(9, "Pique"));
-*/
+
 /*
 		j1.getCartesEnMain().ajouter(new Carte(10, "Trèfle"));
 		j1.getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
