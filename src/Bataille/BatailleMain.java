@@ -22,14 +22,14 @@ public class BatailleMain {
 		j1.getCartesEnMain().ajouter(new Carte(10, "Pique"));
 		j1.getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
 		j1.getCartesEnMain().ajouter(new Carte(7, "Coeur"));
-		j1.getCartesEnMain().ajouter(new Carte(13, "Coeur"));	
+		j1.getCartesEnMain().ajouter(new Carte(14, "Coeur"));	
 		j2.getCartesEnMain().ajouter(new Carte(8, "Coeur"));
 		j2.getCartesEnMain().ajouter(new Carte(11, "Pique"));
 		j2.getCartesEnMain().ajouter(new Carte(8, "Pique"));
 		j2.getCartesEnMain().ajouter(new Carte(7, "Trèfle"));
 		j3.getCartesEnMain().ajouter(new Carte(2, "Coeur"));
 		j3.getCartesEnMain().ajouter(new Carte(11, "Pique"));
-		j3.getCartesEnMain().ajouter(new Carte(12, "Pique"));
+		j3.getCartesEnMain().ajouter(new Carte(8, "Pique"));
 		j3.getCartesEnMain().ajouter(new Carte(14, "Trèfle"));
 
 /*
@@ -60,7 +60,7 @@ public class BatailleMain {
 				System.out.println("Nombre de cartes en main : "+j.getCartesEnMain().taille());
 				System.out.println(j.getCartesEnMain());
 				}else
-					System.out.println(j.getNom()+" a perdu");
+					System.out.println(j.getNom()+" a perdu \n");
 			}
 
 			for(Joueur j :joueurs){
