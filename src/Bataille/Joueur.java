@@ -3,7 +3,7 @@ import java.util.*;
 
 /**
  * Classe représentant le joueur
- * @author Marc
+ * @author Marc / Tony
  * @version 1.0
  */
 
@@ -16,7 +16,7 @@ public class Joueur {
 	
 /*Constructeur*/
 	/**
-	 * Constructeur de la classe Joueur qui a un nom est le nombre de parties gagnées.
+	 * Constructeur de la classe Joueur
 	 * @param nomJoueur Nom du Joueur
 	 */	
 	public Joueur(String nomJoueur){
@@ -119,7 +119,7 @@ public class Joueur {
 	}
 	
 	/**
-	 * Méthode recupererCartes qui va récupérer toutes les cartes dans la pile et les ajouter dans la Main
+	 * Méthode recupererCartes qui va récupérer toutes les cartes posées et les ajouter dans la Main
 	 */
 	public void recupererCartes(Pile p){
 		ArrayList<Carte> cartesRecup = p.vider();

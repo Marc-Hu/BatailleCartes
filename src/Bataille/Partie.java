@@ -36,10 +36,18 @@ public class Partie {
 /*Getters*/
 	/**
 	 * Retourne le paquet initilialisé dans la partie en cours
-	 * @return
+	 * @return le paquet initilialisé dans la partie en cours
 	 */
 	public Paquet getPaquet(){
 		return this.paquet;
+	}
+	
+	/**
+	 * Retourne les joueurs de la partie en cours
+	 * @return Les jouers de la partie en cours
+	 */
+	public Joueur[] getJoueurs(){
+		return this.joueurs;
 	}
 
 	
@@ -73,7 +81,7 @@ public class Partie {
 	
 	/**
 	 * Renvoie la carte la plus forte parmi les cartes posées
-	 * @return
+	 * @return			La carte la plus forte parmi les cartes posées
 	 */
 	public Carte laPlusForte(){
 		Carte cMax = null;
@@ -95,7 +103,8 @@ public class Partie {
 	}
 	
 	/**
-	 * 
+	 * Retourne le nombre de joueurs ayant la même carte (et devant donc faire une bataille)
+	 * @return 			Nombre de joueurs dans la bataille
 	 */
 	public int joueursDansBataille(Carte c){
 		int somme = 0;
@@ -111,9 +120,9 @@ public class Partie {
 	}
 	
 	/**
-	 * 
-	 * @param c
-	 * @return
+	 * Retourne le joueur qui a gagné le tour
+	 * @param c				La carte la plus forte du tour
+	 * @return				Le joueur ayant gagné le tour
 	 */
 	public Joueur gagnantTour(Carte c){
 		for(Joueur j : this.joueurs){
