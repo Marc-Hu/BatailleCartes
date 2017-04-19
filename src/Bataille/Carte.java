@@ -16,12 +16,10 @@ public class Carte {
 	 * Construit une instance de Carte
 	 * @param couleur		Couleur de la carte(Carreau, Coeur, Trèfle ou Pique)
 	 * @param valeur		Valeur de la carte(De 2 à 14 avec 11=Valet, ..., 14=As)
-	 * @param nomFichier	Nom du fichier associé à l'image de la carte
 	 */
 	public Carte(int valeur, String couleur/**, String nomFichier**/){
 		this.valeur = valeur;
 		this.couleur = couleur;
-
 		//this.nomFichier = nomFichier;
 	}
 	
@@ -52,8 +50,8 @@ public class Carte {
 
 	/**
 	 * Vérifie si la Carte courante a une plus grande valeur que la carte c
-	 * @param c		La carte à comparer
-	 * @return		True si la carte courante a une plus grande valeur que c
+	 * @param c 	La carte à comparer
+	 * @return 		True si la carte courante a une plus grande valeur que c
 	 */
 	public boolean estPlusForte(Carte c){
 		return this.getValeur() > c.getValeur();

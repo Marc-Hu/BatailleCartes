@@ -33,7 +33,7 @@ public class Main {
 	
 	/**
 	 * Ajoute la carte c en dessous de la main 
-	 * @param carteAjoute Carte à ajouter dans le Deque
+	 * @param c Carte à ajouter dans le Deque
 	 */
 	public void ajouter(Carte c){
 		this.cartesMain.offerLast(c);
@@ -41,7 +41,7 @@ public class Main {
 	
 	/**
 	 * Retire la carte au dessus de la main
-	 * @return La carte au dessus de la main
+	 * @return Carte au dessus de la main
 	 */
 	public Carte retirer(){
 		if(this.cartesMain.size() >= 1)
@@ -60,7 +60,7 @@ public class Main {
 	
 	/**
 	 * Retourne le nombre de cartes présentes dans la main
-	 * @return Le nombre de cartes présentes dans la main
+	 * @return Nombre de cartes présentes dans la main
 	 */
 	public int taille(){
 		return this.cartesMain.size();

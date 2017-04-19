@@ -15,6 +15,7 @@ public class Paquet{
 /*Constructeur*/
 	/**
 	 * Construit une instance de paquet
+	 * @param nbCarte 	Nombre de cartes du paquet à initialiser
 	 */
 	public Paquet(int nbCarte) /*throws NombreCarteException*/{
 		/*if(nbCarte != 32 && nbCarte != 52) throw new NombreCarteException(nbCarte);*/
@@ -50,7 +51,7 @@ public class Paquet{
 	
 	/**
 	 * Retourne le nombre de carte dans le paquet
-	 * @return Le nombre de cartes dans le paquet
+	 * @return Nombre de cartes dans le paquet
 	 */
 	public int taille(){
 		return this.paquetCartes.size();
@@ -65,8 +66,8 @@ public class Paquet{
 	
 	/**
 	 * Permet de de déterminer si une carte est bien contenu dans le paquet
-	 * @param c
-	 * @return
+	 * @param c		Carte dont on souhaite vérifier la présence
+	 * @return		true si la carte est présente dans le paquet
 	 */
 	public boolean contient(Carte c){
 		return this.paquetCartes.contains(c);
@@ -74,7 +75,7 @@ public class Paquet{
 	
 	/**
 	 * retourne la premiere carte du paquet et la supprime du paquet
-	 * @return La première carte du paquet (ou null)
+	 * @return Première carte du paquet (ou null)
 	 */
 	public Carte retirer(){
 		if(this.taille() > 0){ 

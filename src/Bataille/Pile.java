@@ -31,7 +31,7 @@ public class Pile {
 	}
 	
 	/**
-	 * Ajoute un carte au dessus de la pile
+	 * Ajoute une carte au dessus de la pile
 	 * @param c		Carte à ajouter
 	 */
 	public void ajouter(Carte c){
@@ -40,7 +40,7 @@ public class Pile {
 	
 	/**
 	 * Vide la pile de carte
-	 * @return Une liste des cartes récupérées
+	 * @return Liste des cartes récupérées
 	 */
 	public ArrayList<Carte> vider(){
 		ArrayList<Carte> cartes = new ArrayList<Carte>();
@@ -52,7 +52,7 @@ public class Pile {
 	
 	/**
 	 * Retourne la première carte de la pile sans la retirer 
-	 * @return La première carte de la pile
+	 * @return Première carte de la pile
 	 */
 	public Carte premiereCarte(){
 		if(this.pile.size() >= 1)
@@ -71,7 +71,7 @@ public class Pile {
 
 	/**
 	 * Retourne le nombre de cartes de la pile
-	 * @return Le nombre de cartes de la pile.
+	 * @return Nombre de cartes de la pile.
 	 */
 	public int taille(){
 		return this.pile.size();

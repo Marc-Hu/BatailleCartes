@@ -29,7 +29,7 @@ public class Joueur {
 
 /*Getters*/
 	/**
-	 * Méthode get qui renvoie le nom d'un joueur
+	 * Retourne le nom d'un joueur
 	 * @return Le nom du joueur.
 	 */
 	public String getNom(){
@@ -37,7 +37,7 @@ public class Joueur {
 	}
 	
 	/**
-	 * Méthode get qui renvoie la main du joueur
+	 * Retourne la main du joueur
 	 * @return La main du jouer
 	 */
 	public Main getCartesEnMain(){
@@ -45,8 +45,8 @@ public class Joueur {
 	}
 	
 	/**
-	 * Méthode get qui renvoie la pile du jouer
-	 * @return la pile du joueur
+	 * Retourne la pile du jouer
+	 * @return La pile du joueur
 	 */
 	public Pile getPileCartes(){
 		return this.pileCartes;
@@ -54,7 +54,7 @@ public class Joueur {
 	
 	/**
 	 * Retourne la valeur de l'attribut estDansPartie
-	 * @return
+	 * @return True si le joueur est toujours dans la Partie
 	 */
 	public boolean getEstDansPartie(){
 		return this.estDansPartie;
@@ -62,7 +62,7 @@ public class Joueur {
 	
 	/**
 	 * Retourne la valeur de l'attribut estDansBataille
-	 * @return
+	 * @return True si le joueur va participer à une bataille
 	 */
 	public boolean getEstDansBataille(){
 		return this.estDansBataille;
@@ -70,7 +70,6 @@ public class Joueur {
 	
 	
 /*Setters*/
-	
 	/**
 	 * Modifie la valeur de estDansPartie
 	 * @param b		True ou False
@@ -90,7 +89,6 @@ public class Joueur {
 /*Méthodes*/
 	/**
 	 * Méthode toString de la classe Joueur.
-	 * @return Le toString de la classe Joueur.
 	 */
 	public String toString(){
 		String s = "Je suis le joueur "+this.nom+'.';
@@ -105,7 +103,7 @@ public class Joueur {
 	}
 	
 	/**
-	 * Méthode poserUneCarte qui va retirer une carte dans la main et l'ajouter dans sa pile
+	 * Retire une carte de la main et l'ajoute dans sa pile
 	 * @return La carte posée
 	 */
 	public Carte poserUneCarte(){
@@ -118,7 +116,8 @@ public class Joueur {
 	}
 	
 	/**
-	 * Méthode recupererCartes qui va récupérer toutes les cartes posées et les ajouter dans la Main
+	 * Récupére toutes les cartes de la pile c et les ajoute dans sa Main
+	 * @param p Pile dont les cartes vont être récupérées
 	 */
 	public void recupererCartes(Pile p){
 		ArrayList<Carte> cartesRecup = p.vider();

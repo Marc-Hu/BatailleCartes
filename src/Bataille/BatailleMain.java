@@ -1,7 +1,5 @@
 package Bataille;
 
-import java.util.*;
-
 public class BatailleMain {
 
 	public static void main(String[] args) {

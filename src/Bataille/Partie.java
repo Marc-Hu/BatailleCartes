@@ -14,9 +14,9 @@ public class Partie {
 	
 /*Constructeur*/
 	/**
-	 * Créer une instance de partie 
-	 * @param joueurs est un tableau de joueur
-	 * @param paquet
+	 * Construit une instance de partie 
+	 * @param joueurs 	Joueurs participant à la partie
+	 * @param paquet 	Paquet de carte utilisé pour jouer
 	 */
 	public Partie(Joueur[] joueurs, Paquet paquet){
 		this.joueurs = joueurs;
@@ -24,8 +24,8 @@ public class Partie {
 	}
 	
 	/**
-	 * Créer une instance de partie, le paquet a 52 cartes par défaut
-	 * @param joueurs est un tableau de joueur
+	 * Construit une instance de partie, le paquet a 52 cartes par défaut
+	 * @param joueurs 	Joueurs participant à la partie
 	 */
 	public Partie(Joueur[] joueurs){
 		this.joueurs = joueurs;
@@ -36,7 +36,7 @@ public class Partie {
 /*Getters*/
 	/**
 	 * Retourne le paquet initilialisé dans la partie en cours
-	 * @return le paquet initilialisé dans la partie en cours
+	 * @return Paquet initilialisé dans la partie en cours
 	 */
 	public Paquet getPaquet(){
 		return this.paquet;
@@ -44,7 +44,7 @@ public class Partie {
 	
 	/**
 	 * Retourne les joueurs de la partie en cours
-	 * @return Les jouers de la partie en cours
+	 * @return Joueurs de la partie en cours
 	 */
 	public Joueur[] getJoueurs(){
 		return this.joueurs;
@@ -81,7 +81,7 @@ public class Partie {
 	
 	/**
 	 * Renvoie la carte la plus forte parmi les cartes posées
-	 * @return			La carte la plus forte parmi les cartes posées
+	 * @return	Carte la plus forte parmi les cartes posées
 	 */
 	public Carte laPlusForte(){
 		Carte cMax = null;
@@ -104,6 +104,7 @@ public class Partie {
 	
 	/**
 	 * Retourne le nombre de joueurs ayant la même carte (et devant donc faire une bataille)
+	 * @param c 		Carte la plus forte du tour actuel
 	 * @return 			Nombre de joueurs dans la bataille
 	 */
 	public int joueursDansBataille(Carte c){
@@ -121,8 +122,8 @@ public class Partie {
 	
 	/**
 	 * Retourne le joueur qui a gagné le tour
-	 * @param c				La carte la plus forte du tour
-	 * @return				Le joueur ayant gagné le tour
+	 * @param c				Carte la plus forte du tour actuel
+	 * @return				Joueur ayant gagné le tour
 	 */
 	public Joueur gagnantTour(Carte c){
 		for(Joueur j : this.joueurs){
