@@ -1,6 +1,6 @@
 package Bataille;
 
-//import java.util.*;
+import java.util.*;
 
 public class BatailleMain {
 
@@ -46,34 +46,42 @@ public class BatailleMain {
 		joueursP3[1].getCartesEnMain().ajouter(new Carte(8, "Coeur"));
 		joueursP3[1].getCartesEnMain().ajouter(new Carte(9, "Trèfle"));
 		joueursP3[1].getCartesEnMain().ajouter(new Carte(10, "Coeur"));
-/*		
-		j1.getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
-		j1.getCartesEnMain().ajouter(new Carte(7, "Coeur"));
-		j1.getCartesEnMain().ajouter(new Carte(14, "Coeur"));	
-		j2.getCartesEnMain().ajouter(new Carte(8, "Coeur"));
-		j2.getCartesEnMain().ajouter(new Carte(11, "Pique"));
-		j2.getCartesEnMain().ajouter(new Carte(8, "Pique"));
-		j2.getCartesEnMain().ajouter(new Carte(7, "Trèfle"));
-		j3.getCartesEnMain().ajouter(new Carte(2, "Coeur"));
-		j3.getCartesEnMain().ajouter(new Carte(11, "Pique"));
-		j3.getCartesEnMain().ajouter(new Carte(8, "Pique"));
-		j3.getCartesEnMain().ajouter(new Carte(14, "Trèfle"));
-*/
-
 		
-		Partie[] parties = new Partie[3];
+//Initialisation partie 4 (3 joueurs)
+		Joueur[] joueursP4 = new Joueur[3];
+		joueursP4[0] = new Joueur("j1");
+		joueursP4[1] = new Joueur("j2");
+		joueursP4[2] = new Joueur("j3");
+		Partie p4 = new Partie(joueursP4);		
+		
+		joueursP4[0].getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
+		joueursP4[0].getCartesEnMain().ajouter(new Carte(7, "Coeur"));
+		joueursP4[0].getCartesEnMain().ajouter(new Carte(2, "Coeur"));
+		joueursP4[1].getCartesEnMain().ajouter(new Carte(11, "Coeur"));
+		joueursP4[1].getCartesEnMain().ajouter(new Carte(8, "Pique"));
+		joueursP4[1].getCartesEnMain().ajouter(new Carte(12, "Coeur"));
+		joueursP4[2].getCartesEnMain().ajouter(new Carte(11, "Coeur"));
+		joueursP4[2].getCartesEnMain().ajouter(new Carte(6, "Pique"));
+		joueursP4[2].getCartesEnMain().ajouter(new Carte(10, "Coeur"));
+	
+
+		Partie[] parties = new Partie[4];
 		parties[0] = p1;
 		parties[1] = p2;
 		parties[2] = p3;
+		parties[3] = p4;
 		
+		//Tableau pour lancer les 4 parties initialisées
 		for(Partie p : parties){
 			
 			System.out.println("Début de la partie");
 			int nbTours = 0;
+			//Début du tour (par défaut les joueurs dans la partie sont considérées dans la bataille)
 			do{
 				System.out.println("*****************************************");
 				System.out.println("Tour n°"+(nbTours+1));
 				
+				//Affiche la situation de chaque joueur
 				for(Joueur j : p.getJoueurs()){
 					if(j.getEstDansPartie()){
 					System.out.println(j.getNom()+" : ");
@@ -83,6 +91,7 @@ public class BatailleMain {
 						System.out.println(j.getNom()+" a perdu \n");
 				}
 	
+				//Chaque joueur encore en jeu pose une carte
 				for(Joueur j : p.getJoueurs()){
 					if(j.getEstDansPartie()){
 						j.poserUneCarte();
@@ -90,11 +99,13 @@ public class BatailleMain {
 					}
 				}
 				
+				//On regarde la carte le plus forte puis on vérifie si plusieurs joueurs ont posé cette carte
 				Carte carteLaPlusGrande = p.laPlusForte();
 				System.out.println("Carte la plus forte : "+carteLaPlusGrande);
 				int nbJoueursDansBataille = p.joueursDansBataille(carteLaPlusGrande);
 				System.out.println("Il y a "+nbJoueursDansBataille+" joueurs dans la bataille");
 				
+				//Boucle interne simulant une bataille (cas où plusieurs joueurs ont la carte la plus forte)
 				if(nbJoueursDansBataille > 1){
 					do{
 						for(Joueur j : p.getJoueurs()){
@@ -106,24 +117,29 @@ public class BatailleMain {
 								System.out.println(j.getNom()+" a posé "+j.getPileCartes().premiereCarte());
 							}
 						}
+						
+						//On revérifie quelle est la carte la plus forte parmi les joueurs en bataille
 						carteLaPlusGrande = p.laPlusForte();
 						nbJoueursDansBataille = p.joueursDansBataille(carteLaPlusGrande);
+						
 					}while(nbJoueursDansBataille > 1);
 				}
 				
+				//Le joueur gagnant le tour récupère toutes les cartes posées
 				Joueur gagnantTour = p.gagnantTour(carteLaPlusGrande);
 				System.out.println(gagnantTour.getNom()+" récupère les cartes");
-				
 				for(Joueur j : p.getJoueurs()){
 					if(j.getEstDansPartie())
 						gagnantTour.recupererCartes(j.getPileCartes());
 				}
 				
+				//Les joueurs ne possédant plus de cartes ont perdu
 				for(Joueur j : p.getJoueurs()){
 					if(j.getEstDansPartie() && j.getCartesEnMain().taille() == 0)
 						j.setEstDansPartie(false);
 				}
 				
+				//On remet à true le boolean estDansBataille pour le prochain tour
 				for(Joueur j : p.getJoueurs()){
 					if(j.getEstDansPartie())
 						j.setEstDansBataille(true);
@@ -131,8 +147,9 @@ public class BatailleMain {
 	
 				nbTours+=1;
 				System.out.println("*****************************************");
-			}while(!p.finie());
+			}while(!p.finie()); //S'il reste un seul joueur dans la partie, il a gagné
 			
+			//Affichage du joueur ayant gagné
 			for(Joueur j : p.getJoueurs()){
 				if(j.getEstDansPartie())
 					System.out.println(j.getNom()+" a gagné \n\n");
