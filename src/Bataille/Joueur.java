@@ -114,7 +114,6 @@ public class Joueur {
 			this.pileCartes.ajouter(c);
 			return c;
 		}
-		
 		return null;
 	}
 	

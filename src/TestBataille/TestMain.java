@@ -28,7 +28,6 @@ public class TestMain {
 			System.out.println("Vous n'avez pas de cartes en main");
 		else
 			System.out.println("Vous avez "+cartesMain.taille()+" cartes en main");
-		
 		System.out.println("J'enlève les cartes de la main");
 		int tailleMain = cartesMain.taille();
 		for(int i =0; i<tailleMain; i++)
@@ -39,10 +38,6 @@ public class TestMain {
 			System.out.println("Vous n'avez pas de cartes en main");
 		else
 			System.out.println("Vous avez "+cartesMain.taille()+" cartes en main");
-		
-		
-		
-		
 			
 	}
 }
