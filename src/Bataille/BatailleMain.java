@@ -6,22 +6,46 @@ public class BatailleMain {
 
 	public static void main(String[] args) {
 
-		
+// Initialisation partie 1	
 		Joueur[] joueursP1 = new Joueur[2];
 		joueursP1[0] = new Joueur("j1");
 		joueursP1[1] = new Joueur("j2");
-
 		Partie p1 = new Partie(joueursP1);
-
 
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(10, "Pique"));
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(7, "Coeur"));
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(13, "Trèfle"));
+		joueursP1[1].getCartesEnMain().ajouter(new Carte(8, "Coeur"));
+		joueursP1[1].getCartesEnMain().ajouter(new Carte(11, "Pique"));
 		joueursP1[1].getCartesEnMain().ajouter(new Carte(8, "Pique"));
-		joueursP1[1].getCartesEnMain().ajouter(new Carte(10, "Pique"));
-		joueursP1[1].getCartesEnMain().ajouter(new Carte(8, "Pique"));
-		joueursP1[1].getCartesEnMain().ajouter(new Carte(7, "Pique"));
+		joueursP1[1].getCartesEnMain().ajouter(new Carte(7, "Trèfle"));
+	
+//Initialisation partie 2
+		Joueur[] joueursP2 = new Joueur[2];
+		joueursP2[0] = new Joueur("j1");
+		joueursP2[1] = new Joueur("j2");
+		Partie p2 = new Partie(joueursP2);
+
+		joueursP2[0].getCartesEnMain().ajouter(new Carte(12, "Trèfle"));
+		joueursP2[0].getCartesEnMain().ajouter(new Carte(10, "Trèfle"));
+		joueursP2[0].getCartesEnMain().ajouter(new Carte(14, "Coeur"));
+		joueursP2[1].getCartesEnMain().ajouter(new Carte(12, "Pique"));
+		joueursP2[1].getCartesEnMain().ajouter(new Carte(8, "Trèfle"));
+		joueursP2[1].getCartesEnMain().ajouter(new Carte(9, "Trèfle"));
+		
+//Initialisation partie 3
+		Joueur[] joueursP3 = new Joueur[2];
+		joueursP3[0] = new Joueur("j1");
+		joueursP3[1] = new Joueur("j2");
+		Partie p3 = new Partie(joueursP3);
+
+		joueursP3[0].getCartesEnMain().ajouter(new Carte(10, "Pique"));
+		joueursP3[0].getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
+		joueursP3[0].getCartesEnMain().ajouter(new Carte(12, "Trèfle"));
+		joueursP3[1].getCartesEnMain().ajouter(new Carte(8, "Coeur"));
+		joueursP3[1].getCartesEnMain().ajouter(new Carte(9, "Trèfle"));
+		joueursP3[1].getCartesEnMain().ajouter(new Carte(10, "Coeur"));
 /*		
 		j1.getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
 		j1.getCartesEnMain().ajouter(new Carte(7, "Coeur"));
@@ -35,25 +59,12 @@ public class BatailleMain {
 		j3.getCartesEnMain().ajouter(new Carte(8, "Pique"));
 		j3.getCartesEnMain().ajouter(new Carte(14, "Trèfle"));
 */
-/*
-		j1.getCartesEnMain().ajouter(new Carte(12, "Trèfle"));
-		j1.getCartesEnMain().ajouter(new Carte(10, "Trèfle"));
-		j1.getCartesEnMain().ajouter(new Carte(14, "Coeur"));
-		j2.getCartesEnMain().ajouter(new Carte(12, "Pique"));
-		j2.getCartesEnMain().ajouter(new Carte(8, "Pique"));
-		j2.getCartesEnMain().ajouter(new Carte(9, "Pique"));
-*/
-/*
-		j1.getCartesEnMain().ajouter(new Carte(10, "Trèfle"));
-		j1.getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
-		j1.getCartesEnMain().ajouter(new Carte(12, "Coeur"));
-		j2.getCartesEnMain().ajouter(new Carte(8, "Pique"));
-		j2.getCartesEnMain().ajouter(new Carte(9, "Pique"));
-		j2.getCartesEnMain().ajouter(new Carte(10, "Pique"));
-*/
+
 		
-		Partie[] parties = new Partie[1];
+		Partie[] parties = new Partie[3];
 		parties[0] = p1;
+		parties[1] = p2;
+		parties[2] = p3;
 		
 		for(Partie p : parties){
 			
@@ -90,6 +101,7 @@ public class BatailleMain {
 							if(j.getEstDansBataille()){
 								j.ditBataille();
 								j.poserUneCarte();
+								System.out.println(j.getNom()+" pose une carte face cachée");
 								j.poserUneCarte();
 								System.out.println(j.getNom()+" a posé "+j.getPileCartes().premiereCarte());
 							}
@@ -123,7 +135,7 @@ public class BatailleMain {
 			
 			for(Joueur j : p.getJoueurs()){
 				if(j.getEstDansPartie())
-					System.out.println(j.getNom()+" a gagné");
+					System.out.println(j.getNom()+" a gagné \n\n");
 			}
 			
 		}
