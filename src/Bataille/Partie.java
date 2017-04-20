@@ -197,6 +197,7 @@ public class Partie {
 					
 					//On revérifie quelle est la carte la plus forte parmi les joueurs en bataille
 					carteLaPlusGrande = this.laPlusForte();
+					System.out.println("Carte la plus forte : "+carteLaPlusGrande);
 					nbJoueursDansBataille = this.joueursDansBataille(carteLaPlusGrande);
 					
 				}while(nbJoueursDansBataille > 1);

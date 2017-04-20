@@ -121,7 +121,7 @@ public class Joueur {
 	 */
 	public void recupererCartes(Pile p){
 		ArrayList<Carte> cartesRecup = p.vider();
-		Collections.shuffle(cartesRecup);
+		//Collections.shuffle(cartesRecup);
 		for (Carte carteAjout : cartesRecup)
 			this.cartesEnMain.ajouter(carteAjout);
 	}

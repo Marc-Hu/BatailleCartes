@@ -53,14 +53,16 @@ public class TestProjet {
 		Partie p4 = new Partie(joueursP4);		
 		
 		joueursP4[0].getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
-		joueursP4[0].getCartesEnMain().ajouter(new Carte(7, "Coeur"));
-		joueursP4[0].getCartesEnMain().ajouter(new Carte(2, "Coeur"));
-		joueursP4[1].getCartesEnMain().ajouter(new Carte(11, "Coeur"));
-		joueursP4[1].getCartesEnMain().ajouter(new Carte(8, "Pique"));
-		joueursP4[1].getCartesEnMain().ajouter(new Carte(12, "Coeur"));
+		joueursP4[0].getCartesEnMain().ajouter(new Carte(12, "Coeur"));
+		joueursP4[0].getCartesEnMain().ajouter(new Carte(5, "Coeur"));
+		joueursP4[0].getCartesEnMain().ajouter(new Carte(11, "Pique"));
+		joueursP4[1].getCartesEnMain().ajouter(new Carte(11, "Carreau"));
+		joueursP4[1].getCartesEnMain().ajouter(new Carte(14, "Carreau"));
+		joueursP4[1].getCartesEnMain().ajouter(new Carte(2, "Carreau"));
+		joueursP4[1].getCartesEnMain().ajouter(new Carte(12, "Carreau"));
 		joueursP4[2].getCartesEnMain().ajouter(new Carte(11, "Coeur"));
 		joueursP4[2].getCartesEnMain().ajouter(new Carte(6, "Pique"));
-		joueursP4[2].getCartesEnMain().ajouter(new Carte(10, "Coeur"));
+		joueursP4[2].getCartesEnMain().ajouter(new Carte(4, "Coeur"));
 	
 
 		Partie[] parties = new Partie[4];
@@ -75,6 +77,5 @@ public class TestProjet {
 			parties[i].lancer();		
 		}
 
-			
 	}
 }
