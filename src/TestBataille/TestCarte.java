@@ -14,11 +14,13 @@ public class TestCarte {
 		//Test de l'affichage
 		for(Carte c : cartes)
 			System.out.println(c);
-	
+		System.out.println();
+		
 		Carte c1 = cartes.get(0);
 		Carte c10 = cartes.get(9);
 		
 		//Test estPlusForte()
+		System.out.println("Tests de la méthode estPlusForte()");
 		if(c1.estPlusForte(c10))
 			System.out.println(c1+" > "+c10);
 		else
@@ -33,8 +35,10 @@ public class TestCarte {
 			System.out.println(c10+" > "+c10);
 		else
 			System.out.println(c10+" <= "+c10);
+		System.out.println();
 		
 		//Test a MemeValeur()
+		System.out.println("Tests de la méthode aMemeValeur()");
 		if(c1.aMemeValeur(c10))
 			System.out.println(c1+" == "+c10);
 		else

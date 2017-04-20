@@ -149,6 +149,89 @@ public class Partie {
 		
 		return true;
 	}
+	
+	public void lancer(){
+		System.out.println("Début de la partie");
+		int nbTours = 0;
+		//Début du tour (par défaut les joueurs dans la partie sont considérées dans la bataille)
+		do{
+			System.out.println("*****************************************");
+			System.out.println("Tour n°"+(nbTours+1));
+			
+			//Affiche la situation de chaque joueur
+			for(Joueur j : this.joueurs){
+				if(j.getEstDansPartie()){
+				System.out.println(j.getNom()+" : ");
+				System.out.println("Nombre de cartes en main : "+j.getCartesEnMain().taille());
+				System.out.println(j.getCartesEnMain());
+				}else
+					System.out.println(j.getNom()+" a perdu \n");
+			}
+
+			//Chaque joueur encore en jeu pose une carte
+			for(Joueur j : this.joueurs){
+				if(j.getEstDansPartie()){
+					j.poserUneCarte();
+					System.out.println(j.getNom()+" a posé "+j.getPileCartes().premiereCarte());
+				}
+			}
+			
+			//On regarde la carte le plus forte puis on vérifie si plusieurs joueurs ont posé cette carte
+			Carte carteLaPlusGrande = this.laPlusForte();
+			System.out.println("Carte la plus forte : "+carteLaPlusGrande);
+			int nbJoueursDansBataille = this.joueursDansBataille(carteLaPlusGrande);
+			System.out.println("Il y a "+nbJoueursDansBataille+" joueurs dans la bataille");
+			
+			//Boucle interne simulant une bataille (cas où plusieurs joueurs ont la carte la plus forte)
+			if(nbJoueursDansBataille > 1){
+				do{
+					for(Joueur j : this.joueurs){
+						if(j.getEstDansBataille()){
+							j.ditBataille();
+							j.poserUneCarte();
+							System.out.println(j.getNom()+" pose une carte face cachée");
+							j.poserUneCarte();
+							System.out.println(j.getNom()+" a posé "+j.getPileCartes().premiereCarte());
+						}
+					}
+					
+					//On revérifie quelle est la carte la plus forte parmi les joueurs en bataille
+					carteLaPlusGrande = this.laPlusForte();
+					nbJoueursDansBataille = this.joueursDansBataille(carteLaPlusGrande);
+					
+				}while(nbJoueursDansBataille > 1);
+			}
+			
+			//Le joueur gagnant le tour récupère toutes les cartes posées
+			Joueur gagnantTour = this.gagnantTour(carteLaPlusGrande);
+			System.out.println(gagnantTour.getNom()+" récupère les cartes");
+			for(Joueur j : this.joueurs){
+				if(j.getEstDansPartie())
+					gagnantTour.recupererCartes(j.getPileCartes());
+			}
+			
+			//Les joueurs ne possédant plus de cartes ont perdu
+			for(Joueur j : this.joueurs){
+				if(j.getEstDansPartie() && j.getCartesEnMain().taille() == 0)
+					j.setEstDansPartie(false);
+			}
+			
+			//On remet à true le boolean estDansBataille pour le prochain tour
+			for(Joueur j : this.joueurs){
+				if(j.getEstDansPartie())
+					j.setEstDansBataille(true);
+			}
+
+			nbTours+=1;
+			System.out.println("*****************************************");
+		}while(!this.finie()); //S'il reste un seul joueur dans la partie, il a gagné
+		
+		//Affichage du joueur ayant gagné
+		for(Joueur j : this.joueurs){
+			if(j.getEstDansPartie())
+				System.out.println(j.getNom()+" a gagné \n\n");
+		}
+	}
 
 	
 	
