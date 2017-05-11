@@ -9,7 +9,7 @@ public class Carte {
 
 	private int valeur;
 	private String couleur;
-	//private String nomFichier;
+	private String nomFichier;
 	
 /*Constructeur*/
 	/**
@@ -17,10 +17,10 @@ public class Carte {
 	 * @param couleur		Couleur de la carte(Carreau, Coeur, Trèfle ou Pique)
 	 * @param valeur		Valeur de la carte(De 2 à 14 avec 11=Valet, ..., 14=As)
 	 */
-	public Carte(int valeur, String couleur/**, String nomFichier**/){
+	public Carte(int valeur, String couleur){
 		this.valeur = valeur;
 		this.couleur = couleur;
-		//this.nomFichier = nomFichier;
+		this.nomFichier = this.nomCarte();
 	}
 	
 /*Getters*/
@@ -38,6 +38,14 @@ public class Carte {
 	 */
 	public int getValeur(){
 		return this.valeur;
+	}
+	
+	/**
+	 * Retourne la valeur de la Carte
+	 * @return la valeur de la Carte
+	 */
+	public String getNomFichier(){
+		return this.nomFichier;
 	}
 	
 /*Méthodes*/
@@ -65,4 +73,19 @@ public class Carte {
 	public boolean aMemeValeur(Carte c){
 		return this.getValeur() == c.getValeur();
 	}
+	
+   /**
+    * Retourne le nom du fichier correspondant aux valeurs des variables d'instance numeroCarte et couleurCarte
+    * @return Le nom du fichier (String)
+    */
+   private String nomCarte(){
+	   String s = new String();
+	   
+		if(this.valeur < 10)
+			s = "images/"+this.couleur+"_0"+this.valeur+".GIF";
+		else
+			s = "images/"+this.couleur+"_"+this.valeur+".GIF";
+		
+		return s;
+   }
 }
