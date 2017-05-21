@@ -6,6 +6,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import Bataille.*;
+
 /**
  * Classe de création d'une fenêtre affichant une carte de jeu
  * @version 1.0
@@ -15,6 +17,7 @@ import javax.swing.border.LineBorder;
 public class FenetreGraphique extends JFrame {
 
 	private int nbTours;
+	private Image background;
 	
 /*Constructeur*/
    /**
@@ -26,10 +29,11 @@ public class FenetreGraphique extends JFrame {
     * @param h					Hauteur de la fenêtre
     * @param nbJoueurs			Nombre de joueurs dans la partie
     */
-   public FenetreGraphique(String title, int x, int y, int w, int h, int nbJoueurs){
+   public FenetreGraphique(String title, String background, int x, int y, int w, int h, int nbJoueurs){
 	    super(title);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE) ;                   
 	    this.setBounds(x, y, w, h);
+	    this.background = Toolkit.getDefaultToolkit().getImage(background);
 	    this.nbTours = 0;
 	    this.initComposants(nbJoueurs);
 	    this.setVisible(true);
@@ -41,42 +45,20 @@ public class FenetreGraphique extends JFrame {
     * Placement des différents JPanel
     */
    private void initComposants(int nbJoueurs){
-	   //Création du panel Nord
-	   JPanel pNorth = this.creerPanelNord();
-	   this.add(pNorth, BorderLayout.NORTH);
+	   PanelImage PanelPrincipal = new PanelImage(new BorderLayout());
+	   //Création de la partie Nord
+	   JLabel texte = new JLabel("Texte d'information", SwingConstants.CENTER);
+	   PanelPrincipal.add(texte, BorderLayout.NORTH);
 	   //Création du panel Centre
 	   JPanel pCenter = this.creerPanelCentre(nbJoueurs);
-	   this.add(pCenter, BorderLayout.CENTER);
+	   PanelPrincipal.add(pCenter, BorderLayout.CENTER);
 	   //Création du panel Sud
 	   JPanel pSouth = this.creerPanelSud();
-	   this.add(pSouth, BorderLayout.SOUTH);
-   }
-   
-   /**
-    * Création du JPanel Nord
-    * @return JPanel Nord
-    */
-   private JPanel creerPanelNord(){
-	   JPanel pNorth = new JPanel(new BorderLayout());
-	   JLabel texte = new JLabel("Texte d'information", SwingConstants.CENTER);
+	   PanelPrincipal.add(pSouth, BorderLayout.SOUTH);
 	   
-	   pNorth.add(texte, BorderLayout.CENTER);
-
-	   return pNorth;
+	   this.add(PanelPrincipal);
    }
-   
-   /**
-    * Création du JPanel Centre
-    * @return JPanel Centre
-    */
-   private JPanel creerPanelCentre(int nbJoueurs){
-	   JPanel pCenter = new JPanel(new GridLayout(1, nbJoueurs));
-	   JLabel[] piles = new JLabel[nbJoueurs];
-	    this.setBackground(Color.GREEN);   
 
-	   return pCenter;
-   }
-   
    /**
     * Création du JPanel Sud
     * @return JPanel Sud
@@ -92,7 +74,79 @@ public class FenetreGraphique extends JFrame {
 	   
 	   pSouth.add(bTour);
 	   pSouth.add(bQuitter);
-	   
+	   pSouth.setOpaque(false);
 	   return pSouth;
    }
+   
+   private JPanel creerPanelCentre(int nbJoueurs){
+	   JPanel pCenter = new JPanel(new GridLayout(1, nbJoueurs, 50, 50));
+	   for(int i=0; i<nbJoueurs; i++)
+		   pCenter.add(this.creerPanelJoueur("images/trefle_14.GIF", "TEST"));
+	   
+	   pCenter.setOpaque(false);
+	   
+	   return pCenter;
+   }
+   
+   
+   private JPanel creerPanelJoueur(String img, String desc){
+	   JPanel panelJoueur = new JPanel(new GridLayout(2, 1));
+	   LabelImage imCarte = new LabelImage(img);
+	   JLabel description = new JLabel(desc);
+	   description.setFont(new Font("Arial",Font.BOLD, 15));
+	   description.setForeground(Color.WHITE);
+	   description.setHorizontalAlignment(JLabel.CENTER);
+	   description.setVerticalAlignment(JLabel.CENTER);
+	   description.setBackground(Color.BLUE);
+	   panelJoueur.add(imCarte);
+	   panelJoueur.add(description);
+	   panelJoueur.setOpaque(false);
+	   return panelJoueur;
+   }
+	
+	class PanelImage extends JPanel {
+		public PanelImage(){
+			super();
+		}
+		public PanelImage(BorderLayout borderLayout) {
+			super(borderLayout);
+		}
+		public void paintComponent(Graphics g) {
+		    	super.paintComponent(g);
+				int hauteurFrame = this.getHeight();
+				int largeurFrame = this.getWidth(); 
+				g.drawImage(FenetreGraphique.this.background, 0, 0, largeurFrame, hauteurFrame, this);
+			
+		    }
+		}
+ /*  
+   class PanelJoueur extends JPanel{
+	   private JLabel image;
+	   private JLabel description;
+	     
+	   public PanelJoueur(String img, String desc){
+		   this.setLayout(new GridLayout(2, 1));
+		   this.image = new JLabel(new ImageIcon(img));
+		   this.description = new JLabel(desc);
+		   this.description.setFont(new Font("Arial",Font.PLAIN, 15));
+		   this.description.setForeground(Color.WHITE);	
+		   
+		   this.add(image);
+		   this.add(description);
+	   }
+	   
+	   public void setImg(JLabel img){
+		   this.image = img;
+	   }
+	   
+	   public void setDesc(JLabel desc){
+		   this.description = desc;
+	   }
+	 
+	    public void paintComponent(Graphics g) {
+	    	super.paintComponent(g);
+     
+	    }
+	}
+*/
 }

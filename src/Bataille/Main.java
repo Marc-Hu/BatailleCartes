@@ -6,7 +6,7 @@ import java.util.*;
  * @version 1.0
  * @author Marc Hu
  */
-public class Main {
+public class Main extends Observable {
 	
 	private ArrayDeque<Carte> cartesMain;
 	
@@ -36,7 +36,11 @@ public class Main {
 	 * @param c Carte à ajouter dans le Deque
 	 */
 	public void ajouter(Carte c){
-		this.cartesMain.offerLast(c);
+		if(c != null){
+			this.cartesMain.offerLast(c);
+			this.setChanged();
+			this.notifyObservers(this.taille());
+		}
 	}
 	
 	/**
@@ -44,8 +48,12 @@ public class Main {
 	 * @return Carte au dessus de la main
 	 */
 	public Carte retirer(){
-		if(this.cartesMain.size() >= 1)
-			return this.cartesMain.pop();
+		if(this.cartesMain.size() >= 1){
+			Carte c = this.cartesMain.pop();
+			this.setChanged();
+			this.notifyObservers(this.taille());
+			return c;
+		}
 		
 		return null;
 	}

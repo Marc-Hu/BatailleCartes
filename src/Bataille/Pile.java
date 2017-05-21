@@ -5,7 +5,7 @@ import java.util.*;
  * Classe de gestion d'une pile de Cartes
  * @author Steeve Jerent / Tony Clonier
  */
-public class Pile {
+public class Pile extends Observable {
 	
 	private Stack<Carte> pile;
 
@@ -36,6 +36,8 @@ public class Pile {
 	 */
 	public void ajouter(Carte c){
 			this.pile.push(c);
+			this.setChanged();
+			this.notifyObservers(c);
 	}
 	
 	/**
@@ -47,6 +49,8 @@ public class Pile {
 		for (Carte c : this.pile)
 			cartes.add(c);
 		this.pile.removeAllElements();
+		this.setChanged();
+		this.notifyObservers();
 		return cartes;
 	}
 	
