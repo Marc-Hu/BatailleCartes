@@ -18,6 +18,7 @@ public class FenetreGraphique extends JFrame {
 
 	private int nbTours;
 	private Image background;
+	private BatailleControleur bControleur;
 	
 /*Constructeur*/
    /**
@@ -29,12 +30,13 @@ public class FenetreGraphique extends JFrame {
     * @param h					Hauteur de la fenêtre
     * @param nbJoueurs			Nombre de joueurs dans la partie
     */
-   public FenetreGraphique(String title, String background, int x, int y, int w, int h, int nbJoueurs){
+   public FenetreGraphique(String title, String background, int x, int y, int w, int h, int nbJoueurs, BatailleControleur bc){
 	    super(title);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE) ;                   
 	    this.setBounds(x, y, w, h);
 	    this.background = Toolkit.getDefaultToolkit().getImage(background);
 	    this.nbTours = 0;
+	    this.bControleur = bc;
 	    this.initComposants(nbJoueurs);
 	    this.setVisible(true);
 	    }
@@ -48,6 +50,8 @@ public class FenetreGraphique extends JFrame {
 	   PanelImage PanelPrincipal = new PanelImage(new BorderLayout());
 	   //Création de la partie Nord
 	   JLabel texte = new JLabel("Texte d'information", SwingConstants.CENTER);
+	   texte.setFont(new Font("Arial",Font.BOLD, 15));
+	   texte.setForeground(Color.WHITE);
 	   PanelPrincipal.add(texte, BorderLayout.NORTH);
 	   //Création du panel Centre
 	   JPanel pCenter = this.creerPanelCentre(nbJoueurs);
@@ -80,8 +84,9 @@ public class FenetreGraphique extends JFrame {
    
    private JPanel creerPanelCentre(int nbJoueurs){
 	   JPanel pCenter = new JPanel(new GridLayout(1, nbJoueurs, 50, 50));
+	   
 	   for(int i=0; i<nbJoueurs; i++)
-		   pCenter.add(this.creerPanelJoueur("images/trefle_14.GIF", "TEST"));
+		   pCenter.add(this.creerPanelJoueur("images/trefle_14.GIF", "TEST", i));
 	   
 	   pCenter.setOpaque(false);
 	   
@@ -89,16 +94,17 @@ public class FenetreGraphique extends JFrame {
    }
    
    
-   private JPanel creerPanelJoueur(String img, String desc){
+   private JPanel creerPanelJoueur(String img, String desc, int i){
 	   JPanel panelJoueur = new JPanel(new GridLayout(2, 1));
-	   LabelImage imCarte = new LabelImage(img);
+	   LabelCarte LCarte = new LabelCarte(img);
+	   bControleur.relierPile(i, LCarte);
+	   
 	   JLabel description = new JLabel(desc);
 	   description.setFont(new Font("Arial",Font.BOLD, 15));
 	   description.setForeground(Color.WHITE);
 	   description.setHorizontalAlignment(JLabel.CENTER);
 	   description.setVerticalAlignment(JLabel.CENTER);
-	   description.setBackground(Color.BLUE);
-	   panelJoueur.add(imCarte);
+	   panelJoueur.add(LCarte);
 	   panelJoueur.add(description);
 	   panelJoueur.setOpaque(false);
 	   return panelJoueur;

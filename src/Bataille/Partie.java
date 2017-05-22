@@ -46,8 +46,8 @@ public class Partie {
 	 * Retourne les joueurs de la partie en cours
 	 * @return Joueurs de la partie en cours
 	 */
-	public Joueur[] getJoueurs(){
-		return this.joueurs;
+	public Joueur getJoueurs(int i){
+		return this.joueurs[i];
 	}
 
 	

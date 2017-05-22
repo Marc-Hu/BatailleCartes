@@ -78,7 +78,7 @@ public class Carte {
     * Retourne le nom du fichier correspondant aux valeurs des variables d'instance numeroCarte et couleurCarte
     * @return Le nom du fichier (String)
     */
-   private String nomCarte(){
+   public String nomCarte(){
 	   String s = new String();
 	   
 		if(this.valeur < 10)

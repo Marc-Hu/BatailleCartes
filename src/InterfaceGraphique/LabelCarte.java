@@ -1,18 +1,23 @@
 package InterfaceGraphique;
 
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.*;
 
-public class LabelImage extends JLabel{
+import Bataille.Carte;
+
+public class LabelCarte extends JLabel implements Observer{
 	private Image im;
 
-	public LabelImage(String nomImage)  {
+	public LabelCarte(String nomImage)  {
 		super();
 		this.setIcon(new ImageIcon(nomImage));
 		this.im = Toolkit.getDefaultToolkit().getImage(nomImage);
 	}
 
-	public LabelImage(){
+	public LabelCarte(){
 		super();
 	}
 
@@ -21,6 +26,13 @@ public class LabelImage extends JLabel{
 		this.setIcon(icon);
 		this.im = Toolkit.getDefaultToolkit().getImage(nouvImage);
 		this.repaint();
+	}
+	
+	public void update(Observable o, Object arg){
+		if(arg instanceof Carte){
+			Carte c = (Carte)arg;
+			this.setImage(c.nomCarte());
+		}
 	}
 
 	public void paintComponent(Graphics g){
