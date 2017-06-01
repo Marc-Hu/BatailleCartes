@@ -22,5 +22,13 @@ public class BatailleControleur {
 		this.getPartie().getJoueurs(i).getCartesEnMain().addObserver(lMain);
 	}
 	
+	public void relierBouton(ButtonTour bt){
+		this.getPartie().addObserver(bt);
+	}
+	
+	public void lancerTour(){
+		this.bataille.lancerTour();
+	}
+	
 
 }

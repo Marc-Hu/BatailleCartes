@@ -1,12 +1,13 @@
 package Bataille;
 
+import java.util.Observable;
 
 /**
  * Classe de gestion d'une partie
  * @version 1.0
  * @author Tony Clonier
  */
-public class Partie {
+public class Partie extends Observable {
 	
 	private Joueur[] joueurs;
 	private Paquet paquet;
@@ -225,6 +226,8 @@ public class Partie {
 			}
 	
 			this.nbTours+=1;
+			this.setChanged();
+			this.notifyObservers(this.nbTours);
 			System.out.println("*****************************************");
 		}
 	}
@@ -238,6 +241,7 @@ public class Partie {
 			}
 			return jGagnant;
 		}
+		
 		return null;
 	}
 	

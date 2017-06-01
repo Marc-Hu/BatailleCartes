@@ -69,11 +69,15 @@ public class FenetreGraphique extends JFrame {
     */
    private JPanel creerPanelSud(){
 	   JPanel pSouth = new JPanel();
-	   JButton bTour = new JButton("Tour n°"+this.nbTours);
+	   ButtonTour bTour = new ButtonTour();
 	   JButton bQuitter = new JButton("Quitter");
 	   
-
-	   //bTour.addActionListener(   );
+	   this.bControleur.relierBouton(bTour);
+	   bTour.addActionListener(new ActionListener(){
+		   public void actionPerformed(ActionEvent e){
+			   FenetreGraphique.this.bControleur.lancerTour();
+		   }
+	   });
 	   //bQuitter.addActionListener(   );
 	   
 	   pSouth.add(bTour);
@@ -86,7 +90,7 @@ public class FenetreGraphique extends JFrame {
 	   JPanel pCenter = new JPanel(new GridLayout(1, nbJoueurs, 50, 50));
 	   
 	   for(int i=0; i<nbJoueurs; i++)
-		   pCenter.add(this.creerPanelJoueur("images/trefle_14.GIF", "TEST", i));
+		   pCenter.add(this.creerPanelJoueur("images/trefle_14.GIF", i));
 	   
 	   pCenter.setOpaque(false);
 	   
@@ -94,18 +98,19 @@ public class FenetreGraphique extends JFrame {
    }
    
    
-   private JPanel creerPanelJoueur(String img, String desc, int i){
+   private JPanel creerPanelJoueur(String img, int i){
 	   JPanel panelJoueur = new JPanel(new GridLayout(2, 1));
-	   LabelCarte LCarte = new LabelCarte(img);
-	   bControleur.relierPile(i, LCarte);
+	   LabelCarte lCarte = new LabelCarte(img);
+	   bControleur.relierPile(i, lCarte);
 	   
-	   JLabel description = new JLabel(desc);
-	   description.setFont(new Font("Arial",Font.BOLD, 15));
-	   description.setForeground(Color.WHITE);
-	   description.setHorizontalAlignment(JLabel.CENTER);
-	   description.setVerticalAlignment(JLabel.CENTER);
-	   panelJoueur.add(LCarte);
-	   panelJoueur.add(description);
+	   LabelMain lMain = new LabelMain();
+	   bControleur.relierMain(i, lMain);
+	   lMain.setFont(new Font("Arial",Font.BOLD, 15));
+	   lMain.setForeground(Color.WHITE);
+	   lMain.setHorizontalAlignment(JLabel.CENTER);
+	   lMain.setVerticalAlignment(JLabel.CENTER);
+	   panelJoueur.add(lCarte);
+	   panelJoueur.add(lMain);
 	   panelJoueur.setOpaque(false);
 	   return panelJoueur;
    }

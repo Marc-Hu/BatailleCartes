@@ -73,7 +73,7 @@ public class TestProjet {
 
 		//Tableau pour lancer les 4 parties initialisées
 		for(int i = 0; i<parties.length; i++){
-			System.out.println("Début de la partie n°i");
+			System.out.println("Début de la partie n°"+i+1);
 			do{
 				parties[i].lancerTour();
 			}while(!parties[i].finie());
