@@ -10,6 +10,7 @@ public class Partie {
 	
 	private Joueur[] joueurs;
 	private Paquet paquet;
+	private int nbTours;
 	
 	
 /*Constructeur*/
@@ -21,6 +22,7 @@ public class Partie {
 	public Partie(Joueur[] joueurs, Paquet paquet){
 		this.joueurs = joueurs;
 		this.paquet = paquet;
+		this.nbTours = 0;
 	}
 	
 	/**
@@ -30,7 +32,7 @@ public class Partie {
 	public Partie(Joueur[] joueurs){
 		this.joueurs = joueurs;
 		this.paquet = new Paquet(52);
-		
+		this.nbTours = 0;
 	}
 	
 /*Getters*/
@@ -149,14 +151,13 @@ public class Partie {
 		
 		return true;
 	}
-	
-	public void lancer(){
-		System.out.println("Début de la partie");
-		int nbTours = 0;
-		//Début du tour (par défaut les joueurs dans la partie sont considérées dans la bataille)
-		do{
+
+	public void lancerTour(){
+		if(this.finie())
+			System.out.println("La partie est terminée");
+		else{
 			System.out.println("*****************************************");
-			System.out.println("Tour n°"+(nbTours+1));
+			System.out.println("Tour n°"+(this.nbTours+1));
 			
 			//Affiche la situation de chaque joueur
 			for(Joueur j : this.joueurs){
@@ -167,7 +168,7 @@ public class Partie {
 				}else
 					System.out.println(j.getNom()+" a perdu \n");
 			}
-
+	
 			//Chaque joueur encore en jeu pose une carte
 			for(Joueur j : this.joueurs){
 				if(j.getEstDansPartie()){
@@ -222,18 +223,22 @@ public class Partie {
 				if(j.getEstDansPartie())
 					j.setEstDansBataille(true);
 			}
-
-			nbTours+=1;
+	
+			this.nbTours+=1;
 			System.out.println("*****************************************");
-		}while(!this.finie()); //S'il reste un seul joueur dans la partie, il a gagné
-		
-		//Affichage du joueur ayant gagné
-		for(Joueur j : this.joueurs){
-			if(j.getEstDansPartie())
-				System.out.println(j.getNom()+" a gagné \n\n");
 		}
 	}
-
 	
+	public Joueur joueurGagnant(){
+		if(this.finie()){
+			Joueur jGagnant = null;
+			for(Joueur j : this.joueurs){
+				if(j.getEstDansPartie())
+					jGagnant = j;
+			}
+			return jGagnant;
+		}
+		return null;
+	}
 	
 }

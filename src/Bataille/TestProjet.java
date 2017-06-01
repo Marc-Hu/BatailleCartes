@@ -70,12 +70,18 @@ public class TestProjet {
 		parties[1] = p2;
 		parties[2] = p3;
 		parties[3] = p4;
-		
+
 		//Tableau pour lancer les 4 parties initialisées
 		for(int i = 0; i<parties.length; i++){
-			System.out.println("JEU D'ESSAI N°"+(i+1));
-			parties[i].lancer();		
+			System.out.println("Début de la partie n°i");
+			do{
+				parties[i].lancerTour();
+			}while(!parties[i].finie());
+			System.out.println(parties[i].joueurGagnant().getNom()+" a gagné la partie");	
 		}
+		
+		parties[3].lancerTour();
 
+		
 	}
 }
