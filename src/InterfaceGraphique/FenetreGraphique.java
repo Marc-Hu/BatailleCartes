@@ -19,6 +19,8 @@ public class FenetreGraphique extends JFrame {
 	private int nbTours;
 	private Image background;
 	private BatailleControleur bControleur;
+	private boolean debutTour;
+	public boolean faireBataille;
 	
 /*Constructeur*/
    /**
@@ -37,6 +39,7 @@ public class FenetreGraphique extends JFrame {
 	    this.background = Toolkit.getDefaultToolkit().getImage(background);
 	    this.nbTours = 0;
 	    this.bControleur = bc;
+	    this.debutTour = true;
 	    this.initComposants(nbJoueurs);
 	    this.setVisible(true);
 	    }
@@ -75,8 +78,17 @@ public class FenetreGraphique extends JFrame {
 	   this.bControleur.relierBouton(bTour);
 	   bTour.addActionListener(new ActionListener(){
 		   public void actionPerformed(ActionEvent e){
-			   FenetreGraphique.this.bControleur.poserCartes();
-		   }
+
+			   FenetreGraphique.this.faireBataille = FenetreGraphique.this.bControleur.initTour();
+
+			   /*
+			   if(FenetreGraphique.this.faireBataille)
+				   FenetreGraphique.this.faireBataille = FenetreGraphique.this.bControleur.bataille();
+			   
+			   FenetreGraphique.this.bControleur.finTour();
+				*/
+			   }
+		   
 	   });
 	   //bQuitter.addActionListener(   );
 	   

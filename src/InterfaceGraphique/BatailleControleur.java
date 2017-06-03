@@ -4,14 +4,14 @@ import Bataille.*;
 
 public class BatailleControleur {
 	
-	private Partie bataille;
+	private Partie partie;
 	
 	public BatailleControleur(Partie partie){
-		this.bataille = partie;
+		this.partie = partie;
 	}
 	
 	public Partie getPartie(){
-		return this.bataille;
+		return this.partie;
 	}
 	
 	public void relierPile(int i, LabelCarte lCarte){
@@ -27,12 +27,19 @@ public class BatailleControleur {
 	}
 	
 	public void lancerTour(){
-		this.bataille.lancerTour();
+		this.partie.lancerTour();
 	}
 	
-	public void poserCartes(){
-		this.bataille.initTour();
+	public boolean initTour(){
+		return this.partie.initTour();
 	}
 	
+	public boolean bataille(){
+		return this.partie.bataille();
+	}
+	
+	public void finTour(){
+		this.partie.finTour();
+	}
 
 }

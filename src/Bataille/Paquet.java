@@ -25,8 +25,8 @@ public class Paquet{
 		// on génère les cartes.
 		for(int j=0; j<4; j++){
 			if(j==0) couleur="Pique";
-			if(j==1) couleur="Carré";
-			if(j==2) couleur="Trèfle";
+			if(j==1) couleur="Carreau";
+			if(j==2) couleur="Trefle";
 			if(j==3) couleur="Coeur";
 			for(int valeur = minValue; valeur <= 14; valeur++){
 				this.paquetCartes.add(new Carte(valeur, couleur/*, valeur+"-"+couleur.".png"*/));
