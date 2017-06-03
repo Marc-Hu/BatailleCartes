@@ -31,7 +31,7 @@ public class BatailleControleur {
 	}
 	
 	public void poserCartes(){
-		this.bataille.poserCartes();
+		this.bataille.initTour();
 	}
 	
 
