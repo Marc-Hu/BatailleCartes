@@ -75,7 +75,7 @@ public class FenetreGraphique extends JFrame {
 	   this.bControleur.relierBouton(bTour);
 	   bTour.addActionListener(new ActionListener(){
 		   public void actionPerformed(ActionEvent e){
-			   FenetreGraphique.this.bControleur.lancerTour();
+			   FenetreGraphique.this.bControleur.poserCartes();
 		   }
 	   });
 	   //bQuitter.addActionListener(   );

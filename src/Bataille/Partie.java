@@ -152,6 +152,18 @@ public class Partie extends Observable {
 		
 		return true;
 	}
+	
+	public void poserCartes(){
+		if(!this.finie()){
+			for(Joueur j : this.joueurs){
+				if(j.getEstDansPartie()){
+					j.poserUneCarte();
+					System.out.println(j.getNom()+" a posé "+j.getPileCartes().premiereCarte());
+				}
+			}
+			
+		}
+	}
 
 	public void lancerTour(){
 		if(this.finie())
@@ -161,22 +173,10 @@ public class Partie extends Observable {
 			System.out.println("Tour n°"+(this.nbTours+1));
 			
 			//Affiche la situation de chaque joueur
-			for(Joueur j : this.joueurs){
-				if(j.getEstDansPartie()){
-				System.out.println(j.getNom()+" : ");
-				System.out.println("Nombre de cartes en main : "+j.getCartesEnMain().taille());
-				System.out.println(j.getCartesEnMain());
-				}else
-					System.out.println(j.getNom()+" a perdu \n");
-			}
+			this.poserCartes();
 	
 			//Chaque joueur encore en jeu pose une carte
-			for(Joueur j : this.joueurs){
-				if(j.getEstDansPartie()){
-					j.poserUneCarte();
-					System.out.println(j.getNom()+" a posé "+j.getPileCartes().premiereCarte());
-				}
-			}
+
 			
 			//On regarde la carte le plus forte puis on vérifie si plusieurs joueurs ont posé cette carte
 			Carte carteLaPlusGrande = this.laPlusForte();

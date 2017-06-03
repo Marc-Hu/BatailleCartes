@@ -30,5 +30,9 @@ public class BatailleControleur {
 		this.bataille.lancerTour();
 	}
 	
+	public void poserCartes(){
+		this.bataille.poserCartes();
+	}
+	
 
 }
