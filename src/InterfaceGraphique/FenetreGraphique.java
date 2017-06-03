@@ -78,15 +78,16 @@ public class FenetreGraphique extends JFrame {
 	   this.bControleur.relierBouton(bTour);
 	   bTour.addActionListener(new ActionListener(){
 		   public void actionPerformed(ActionEvent e){
+			   if(FenetreGraphique.this.debutTour){
+				   FenetreGraphique.this.faireBataille = FenetreGraphique.this.bControleur.initTour();
+				   FenetreGraphique.this.debutTour = false;
+			   }
 
-			   FenetreGraphique.this.faireBataille = FenetreGraphique.this.bControleur.initTour();
-
-			   /*
 			   if(FenetreGraphique.this.faireBataille)
 				   FenetreGraphique.this.faireBataille = FenetreGraphique.this.bControleur.bataille();
 			   
 			   FenetreGraphique.this.bControleur.finTour();
-				*/
+				
 			   }
 		   
 	   });

@@ -33,6 +33,9 @@ public class LabelCarte extends JLabel implements Observer{
 			Carte c = (Carte)arg;
 			this.setImage(c.nomCarte());
 		}
+		
+		if(arg == null)
+			this.setImage(null);
 	}
 
 	public void paintComponent(Graphics g){

@@ -49,6 +49,8 @@ public class Pile extends Observable {
 		for (Carte c : this.pile)
 			cartes.add(c);
 		this.pile.removeAllElements();
+		this.setChanged();
+		this.notifyObservers();
 
 		return cartes;
 	}
