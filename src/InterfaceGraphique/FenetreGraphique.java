@@ -19,8 +19,11 @@ public class FenetreGraphique extends JFrame {
 	private int nbTours;
 	private Image background;
 	private BatailleControleur bControleur;
-	private boolean debutTour;
-	public boolean faireBataille;
+	private final static int INIT = 0;
+	private final static int BATAILLE = 1;
+	private final static int FIN = 2;
+	private int etatTour;
+	
 	
 /*Constructeur*/
    /**
@@ -39,7 +42,7 @@ public class FenetreGraphique extends JFrame {
 	    this.background = Toolkit.getDefaultToolkit().getImage(background);
 	    this.nbTours = 0;
 	    this.bControleur = bc;
-	    this.debutTour = true;
+	    this.etatTour = INIT;
 	    this.initComposants(nbJoueurs);
 	    this.setVisible(true);
 	    }
@@ -72,24 +75,37 @@ public class FenetreGraphique extends JFrame {
     */
    private JPanel creerPanelSud(){
 	   JPanel pSouth = new JPanel();
-	   ButtonTour bTour = new ButtonTour();
+	   JButton bTour = new JButton("Poser cartes");
 	   JButton bQuitter = new JButton("Quitter");
 	   
-	   this.bControleur.relierBouton(bTour);
 	   bTour.addActionListener(new ActionListener(){
 		   public void actionPerformed(ActionEvent e){
-			   if(FenetreGraphique.this.debutTour){
-				   FenetreGraphique.this.faireBataille = FenetreGraphique.this.bControleur.initTour();
-				   FenetreGraphique.this.debutTour = false;
-			   }
-
-			   if(FenetreGraphique.this.faireBataille)
-				   FenetreGraphique.this.faireBataille = FenetreGraphique.this.bControleur.bataille();
 			   
-			   FenetreGraphique.this.bControleur.finTour();
-				
+			   switch(FenetreGraphique.this.etatTour){
+			   		case INIT :
+			   			boolean faireBataille = FenetreGraphique.this.bControleur.initTour();
+			   			if(faireBataille){
+			   				FenetreGraphique.this.etatTour = BATAILLE;
+			   				bTour.setText("Continuer bataille");
+			   			}else{
+			   				FenetreGraphique.this.etatTour = FIN;
+			   				bTour.setText("Ramasser Cartes");
+			   			}
+			   			break;
+			   		case BATAILLE :
+			   			boolean continuerBataille = FenetreGraphique.this.bControleur.bataille();
+			   			if(!continuerBataille){	
+			   				FenetreGraphique.this.etatTour = FIN;
+			   				bTour.setText("Ramasser Cartes");
+			   			}
+			   			break;
+			   		case FIN :
+			   			FenetreGraphique.this.bControleur.finTour();
+			   			FenetreGraphique.this.etatTour = INIT;
+			   			bTour.setText("Poser cartes");
+			   			break;
 			   }
-		   
+		   }
 	   });
 	   //bQuitter.addActionListener(   );
 	   
@@ -143,34 +159,5 @@ public class FenetreGraphique extends JFrame {
 			
 		    }
 		}
- /*  
-   class PanelJoueur extends JPanel{
-	   private JLabel image;
-	   private JLabel description;
-	     
-	   public PanelJoueur(String img, String desc){
-		   this.setLayout(new GridLayout(2, 1));
-		   this.image = new JLabel(new ImageIcon(img));
-		   this.description = new JLabel(desc);
-		   this.description.setFont(new Font("Arial",Font.PLAIN, 15));
-		   this.description.setForeground(Color.WHITE);	
-		   
-		   this.add(image);
-		   this.add(description);
-	   }
-	   
-	   public void setImg(JLabel img){
-		   this.image = img;
-	   }
-	   
-	   public void setDesc(JLabel desc){
-		   this.description = desc;
-	   }
-	 
-	    public void paintComponent(Graphics g) {
-	    	super.paintComponent(g);
-     
-	    }
-	}
-*/
+
 }
