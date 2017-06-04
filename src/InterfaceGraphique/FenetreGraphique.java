@@ -53,10 +53,8 @@ public class FenetreGraphique extends JFrame {
    private void initComposants(int nbJoueurs){
 	   PanelImage PanelPrincipal = new PanelImage(new BorderLayout());
 	   //Création de la partie Nord
-	   JLabel texte = new JLabel("Texte d'information", SwingConstants.CENTER);
-	   texte.setFont(new Font("Arial",Font.BOLD, 15));
-	   texte.setForeground(Color.WHITE);
-	   PanelPrincipal.add(texte, BorderLayout.NORTH);
+	   JPanel pNorth = creerPanelNord();
+	   PanelPrincipal.add(pNorth, BorderLayout.NORTH);
 	   //Création du panel Centre
 	   JPanel pCenter = this.creerPanelCentre(nbJoueurs);
 	   PanelPrincipal.add(pCenter, BorderLayout.CENTER);
@@ -65,6 +63,19 @@ public class FenetreGraphique extends JFrame {
 	   PanelPrincipal.add(pSouth, BorderLayout.SOUTH);
 	   
 	   this.add(PanelPrincipal);
+   }
+   
+   private JPanel creerPanelNord(){
+	   JPanel pNorth = new JPanel();
+	   LabelTexte lInfo = new LabelTexte("Informations : ");
+	   this.bControleur.relierPartie(lInfo);
+	   lInfo.setFont(new Font("Arial",Font.BOLD, 15));
+	   lInfo.setForeground(Color.WHITE);
+	   
+	   pNorth.setOpaque(false);
+	   pNorth.add(lInfo, JLabel.CENTER);
+	   
+	   return pNorth;
    }
 
    /**
@@ -75,7 +86,7 @@ public class FenetreGraphique extends JFrame {
 	   JPanel pSouth = new JPanel();
 	   JButton bTour = new JButton("Poser cartes");
 	   JButton bQuitter = new JButton("Quitter");
-	   
+
 	   bTour.addActionListener(new ActionListener(){
 		   public void actionPerformed(ActionEvent e){
 			   
@@ -132,16 +143,19 @@ public class FenetreGraphique extends JFrame {
    
    
    private JPanel creerPanelJoueur(int i){
-	   JPanel panelJoueur = new JPanel(new GridLayout(2, 1));
-	   LabelCarte lCarte = new LabelCarte();
-	   bControleur.relierPile(i, lCarte);
+	   JPanel panelJoueur = new JPanel(new GridLayout(3, 1));
 	   
-	   LabelMain lMain = new LabelMain();
-	   bControleur.relierMain(i, lMain);
+	   LabelCarte lCarte = new LabelCarte();
+	   this.bControleur.relierPile(i, lCarte);
+	   
+
+	   LabelTexte lMain = new LabelTexte(this.bControleur.getNomJoueur(i)+"\n"+ "Nombre de cartes en main : ");
+	   this.bControleur.relierMain(i, lMain);
 	   lMain.setFont(new Font("Arial",Font.BOLD, 15));
 	   lMain.setForeground(Color.WHITE);
 	   lMain.setHorizontalAlignment(JLabel.CENTER);
 	   lMain.setVerticalAlignment(JLabel.CENTER);
+	   
 	   panelJoueur.add(lCarte);
 	   panelJoueur.add(lMain);
 	   panelJoueur.setOpaque(false);

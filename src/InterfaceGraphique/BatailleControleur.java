@@ -18,8 +18,16 @@ public class BatailleControleur {
 		this.getPartie().getJoueurs(i).getPileCartes().addObserver(lCarte);
 	}
 	
-	public void relierMain(int i, LabelMain lMain){
+	public void relierMain(int i, LabelTexte lMain){
 		this.getPartie().getJoueurs(i).getCartesEnMain().addObserver(lMain);
+	}
+	
+	public void relierPartie(LabelTexte lInfo){
+		this.partie.addObserver(lInfo);
+	}
+	
+	public String getNomJoueur(int i){
+		return this.getPartie().getJoueurs(i).getNom();
 	}
 
 	public void lancerTour(){

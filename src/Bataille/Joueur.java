@@ -7,7 +7,7 @@ import java.util.*;
  * @version 1.0
  */
 
-public class Joueur {
+public class Joueur{
 	private String nom;
 	private Main cartesEnMain;
 	private Pile pileCartes;

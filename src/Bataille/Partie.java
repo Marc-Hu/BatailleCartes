@@ -150,6 +150,8 @@ public class Partie extends Observable {
 		if(nbJoueursDansPartie > 1)
 			return false;
 		
+		this.setChanged();
+		this.notifyObservers("Partie finie");
 		return true;
 	}
 	
@@ -165,9 +167,14 @@ public class Partie extends Observable {
 		}
 		
 		Carte carteLaPlusGrande = this.laPlusForte();
-		System.out.println("Carte la plus forte : "+carteLaPlusGrande);
 		int nbJoueursDansBataille = this.joueursDansBataille(carteLaPlusGrande);
-		System.out.println("Il y a "+nbJoueursDansBataille+" joueurs dans la bataille");
+		System.out.println("Carte la plus forte : "+carteLaPlusGrande);
+		String s = "Carte la plus forte : "+carteLaPlusGrande;
+		if(nbJoueursDansBataille > 1)
+			s += " BATAILLE";
+		System.out.println(s);
+		this.setChanged();
+		this.notifyObservers(s);
 		if(nbJoueursDansBataille > 1)
 			return true;
 				
@@ -193,6 +200,12 @@ public class Partie extends Observable {
 		Carte carteLaPlusGrande = this.laPlusForte();
 		System.out.println("Carte la plus forte : "+carteLaPlusGrande);
 		int nbJoueursDansBataille = this.joueursDansBataille(carteLaPlusGrande);
+		String s = "Carte la plus forte : "+carteLaPlusGrande;
+		if(nbJoueursDansBataille > 1)
+			s += " BATAILLE";
+		System.out.println(s);
+		this.setChanged();
+		this.notifyObservers(s);
 		if(nbJoueursDansBataille > 1)
 			return true;
 				
@@ -203,6 +216,9 @@ public class Partie extends Observable {
 		//Le joueur gagnant le tour récupère toutes les cartes posées
 		Joueur gagnantTour = this.gagnantTour();
 		System.out.println(gagnantTour.getNom()+" récupère les cartes");
+		String s = gagnantTour.getNom()+" récupère les cartes";
+		this.setChanged();
+		this.notifyObservers(s);
 		for(Joueur j : this.joueurs){
 			if(j.getEstDansPartie())
 				gagnantTour.recupererCartes(j.getPileCartes());
