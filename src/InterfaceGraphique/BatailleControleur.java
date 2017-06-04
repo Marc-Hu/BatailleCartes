@@ -21,11 +21,7 @@ public class BatailleControleur {
 	public void relierMain(int i, LabelMain lMain){
 		this.getPartie().getJoueurs(i).getCartesEnMain().addObserver(lMain);
 	}
-	
-	public void relierBouton(ButtonTour bt){
-		this.getPartie().addObserver(bt);
-	}
-	
+
 	public void lancerTour(){
 		this.partie.lancerTour();
 	}
@@ -40,6 +36,10 @@ public class BatailleControleur {
 	
 	public void finTour(){
 		this.partie.finTour();
+	}
+	
+	public boolean finie(){
+		return this.partie.finie();
 	}
 
 }

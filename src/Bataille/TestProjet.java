@@ -11,13 +11,13 @@ public class TestProjet {
 		Partie p1 = new Partie(joueursP1);
 
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(10, "Pique"));
-		joueursP1[0].getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
+		joueursP1[0].getCartesEnMain().ajouter(new Carte(11, "Trefle"));
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(7, "Coeur"));
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(13, "Trèfle"));
 		joueursP1[1].getCartesEnMain().ajouter(new Carte(8, "Coeur"));
 		joueursP1[1].getCartesEnMain().ajouter(new Carte(11, "Pique"));
 		joueursP1[1].getCartesEnMain().ajouter(new Carte(8, "Pique"));
-		joueursP1[1].getCartesEnMain().ajouter(new Carte(7, "Trèfle"));
+		joueursP1[1].getCartesEnMain().ajouter(new Carte(7, "Trefle"));
 	
 //Initialisation partie 2
 		Joueur[] joueursP2 = new Joueur[2];
@@ -25,12 +25,12 @@ public class TestProjet {
 		joueursP2[1] = new Joueur("j2");
 		Partie p2 = new Partie(joueursP2);
 
-		joueursP2[0].getCartesEnMain().ajouter(new Carte(12, "Trèfle"));
-		joueursP2[0].getCartesEnMain().ajouter(new Carte(10, "Trèfle"));
+		joueursP2[0].getCartesEnMain().ajouter(new Carte(12, "Trefle"));
+		joueursP2[0].getCartesEnMain().ajouter(new Carte(10, "Trefle"));
 		joueursP2[0].getCartesEnMain().ajouter(new Carte(14, "Coeur"));
 		joueursP2[1].getCartesEnMain().ajouter(new Carte(12, "Pique"));
-		joueursP2[1].getCartesEnMain().ajouter(new Carte(8, "Trèfle"));
-		joueursP2[1].getCartesEnMain().ajouter(new Carte(9, "Trèfle"));
+		joueursP2[1].getCartesEnMain().ajouter(new Carte(8, "Trefle"));
+		joueursP2[1].getCartesEnMain().ajouter(new Carte(9, "Trefle"));
 		
 //Initialisation partie 3
 		Joueur[] joueursP3 = new Joueur[2];
@@ -39,10 +39,10 @@ public class TestProjet {
 		Partie p3 = new Partie(joueursP3);
 
 		joueursP3[0].getCartesEnMain().ajouter(new Carte(10, "Pique"));
-		joueursP3[0].getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
-		joueursP3[0].getCartesEnMain().ajouter(new Carte(12, "Trèfle"));
+		joueursP3[0].getCartesEnMain().ajouter(new Carte(11, "Trefle"));
+		joueursP3[0].getCartesEnMain().ajouter(new Carte(12, "Trefle"));
 		joueursP3[1].getCartesEnMain().ajouter(new Carte(8, "Coeur"));
-		joueursP3[1].getCartesEnMain().ajouter(new Carte(9, "Trèfle"));
+		joueursP3[1].getCartesEnMain().ajouter(new Carte(9, "Trefle"));
 		joueursP3[1].getCartesEnMain().ajouter(new Carte(10, "Coeur"));
 		
 //Initialisation partie 4 (3 joueurs)
@@ -52,7 +52,7 @@ public class TestProjet {
 		joueursP4[2] = new Joueur("j3");
 		Partie p4 = new Partie(joueursP4);		
 		
-		joueursP4[0].getCartesEnMain().ajouter(new Carte(11, "Trèfle"));
+		joueursP4[0].getCartesEnMain().ajouter(new Carte(11, "Trefle"));
 		joueursP4[0].getCartesEnMain().ajouter(new Carte(12, "Coeur"));
 		joueursP4[0].getCartesEnMain().ajouter(new Carte(5, "Coeur"));
 		joueursP4[0].getCartesEnMain().ajouter(new Carte(11, "Pique"));

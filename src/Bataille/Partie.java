@@ -221,8 +221,6 @@ public class Partie extends Observable {
 		}
 
 		this.nbTours+=1;
-		this.setChanged();
-		this.notifyObservers(this.nbTours);
 		System.out.println("*****************************************");
 	}
 	

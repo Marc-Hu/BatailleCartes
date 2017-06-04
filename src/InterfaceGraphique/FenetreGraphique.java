@@ -16,13 +16,12 @@ import Bataille.*;
  */
 public class FenetreGraphique extends JFrame {
 
-	private int nbTours;
 	private Image background;
 	private BatailleControleur bControleur;
-	private final static int INIT = 0;
+	private final static int DEBUT_TOUR = 0;
 	private final static int BATAILLE = 1;
-	private final static int FIN = 2;
-	private int etatTour;
+	private final static int FIN_TOUR = 2;
+	private int etatPartie;
 	
 	
 /*Constructeur*/
@@ -40,9 +39,8 @@ public class FenetreGraphique extends JFrame {
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE) ;                   
 	    this.setBounds(x, y, w, h);
 	    this.background = Toolkit.getDefaultToolkit().getImage(background);
-	    this.nbTours = 0;
 	    this.bControleur = bc;
-	    this.etatTour = INIT;
+	    this.etatPartie = DEBUT_TOUR;
 	    this.initComposants(nbJoueurs);
 	    this.setVisible(true);
 	    }
@@ -81,28 +79,34 @@ public class FenetreGraphique extends JFrame {
 	   bTour.addActionListener(new ActionListener(){
 		   public void actionPerformed(ActionEvent e){
 			   
-			   switch(FenetreGraphique.this.etatTour){
-			   		case INIT :
+			   switch(FenetreGraphique.this.etatPartie){
+			   		case DEBUT_TOUR :
 			   			boolean faireBataille = FenetreGraphique.this.bControleur.initTour();
 			   			if(faireBataille){
-			   				FenetreGraphique.this.etatTour = BATAILLE;
+			   				FenetreGraphique.this.etatPartie = BATAILLE;
 			   				bTour.setText("Continuer bataille");
 			   			}else{
-			   				FenetreGraphique.this.etatTour = FIN;
+			   				FenetreGraphique.this.etatPartie = FIN_TOUR;
 			   				bTour.setText("Ramasser Cartes");
 			   			}
 			   			break;
 			   		case BATAILLE :
 			   			boolean continuerBataille = FenetreGraphique.this.bControleur.bataille();
 			   			if(!continuerBataille){	
-			   				FenetreGraphique.this.etatTour = FIN;
+			   				FenetreGraphique.this.etatPartie = FIN_TOUR;
 			   				bTour.setText("Ramasser Cartes");
 			   			}
 			   			break;
-			   		case FIN :
+			   		case FIN_TOUR :
 			   			FenetreGraphique.this.bControleur.finTour();
-			   			FenetreGraphique.this.etatTour = INIT;
-			   			bTour.setText("Poser cartes");
+			   			if(!FenetreGraphique.this.bControleur.finie()){
+				   			FenetreGraphique.this.etatPartie = DEBUT_TOUR;
+				   			bTour.setText("Poser cartes");
+			   			}else{
+			   				bTour.setText("Partie finie");
+			   				bTour.setEnabled(false);
+			   			}
+			   				
 			   			break;
 			   }
 		   }
@@ -119,7 +123,7 @@ public class FenetreGraphique extends JFrame {
 	   JPanel pCenter = new JPanel(new GridLayout(1, nbJoueurs, 50, 50));
 	   
 	   for(int i=0; i<nbJoueurs; i++)
-		   pCenter.add(this.creerPanelJoueur("images/trefle_14.GIF", i));
+		   pCenter.add(this.creerPanelJoueur(i));
 	   
 	   pCenter.setOpaque(false);
 	   
@@ -127,9 +131,9 @@ public class FenetreGraphique extends JFrame {
    }
    
    
-   private JPanel creerPanelJoueur(String img, int i){
+   private JPanel creerPanelJoueur(int i){
 	   JPanel panelJoueur = new JPanel(new GridLayout(2, 1));
-	   LabelCarte lCarte = new LabelCarte(img);
+	   LabelCarte lCarte = new LabelCarte();
 	   bControleur.relierPile(i, lCarte);
 	   
 	   LabelMain lMain = new LabelMain();
