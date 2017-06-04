@@ -28,11 +28,13 @@ public class FenetreGraphique extends JFrame {
    /**
     * Construit une instance de fenêtre
     * @param title				Titre de la fenêtre
+    * @param background			Nom de l'image à mettre en fond d'écran
     * @param x					Coordonnée x du coin supérieur gauche
     * @param y					Coordonnée y du coin supérieur gauche
     * @param w					Largeur de la fenêtre
     * @param h					Hauteur de la fenêtre
     * @param nbJoueurs			Nombre de joueurs dans la partie
+    * @param					Contrôleur faisant le lien avec la partie à superviser
     */
    public FenetreGraphique(String title, String background, int x, int y, int w, int h, int nbJoueurs, BatailleControleur bc){
 	    super(title);
@@ -65,8 +67,13 @@ public class FenetreGraphique extends JFrame {
 	   this.add(PanelPrincipal);
    }
    
+   /**
+    * Création du JPanel Nord
+    * @return JPanel Nord
+    */
    private JPanel creerPanelNord(){
 	   JPanel pNorth = new JPanel();
+	   
 	   LabelTexte lInfo = new LabelTexte("Informations : ");
 	   this.bControleur.relierPartie(lInfo);
 	   lInfo.setFont(new Font("Arial",Font.BOLD, 15));
@@ -84,11 +91,23 @@ public class FenetreGraphique extends JFrame {
     */
    private JPanel creerPanelSud(){
 	   JPanel pSouth = new JPanel();
+	   
 	   JButton bTour = new JButton("Poser cartes");
 	   JButton bQuitter = new JButton("Quitter");
+	   
+	   //Lance le premier tour lors de la création de la fenêtre
+		boolean faireBataille = FenetreGraphique.this.bControleur.initTour();
+		if(faireBataille){
+			FenetreGraphique.this.etatPartie = BATAILLE;
+			bTour.setText("Continuer bataille");
+		}else{
+			FenetreGraphique.this.etatPartie = FIN_TOUR;
+			bTour.setText("Ramasser Cartes");
+		}
 
-	   bTour.addActionListener(new ActionListener(){
-		   public void actionPerformed(ActionEvent e){
+		//Bouton principal dont le rôle évolue en fonction de l'avancement de la partie
+		bTour.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
 			   
 			   switch(FenetreGraphique.this.etatPartie){
 			   		case DEBUT_TOUR :
@@ -130,6 +149,11 @@ public class FenetreGraphique extends JFrame {
 	   return pSouth;
    }
    
+   /**
+    * Création du JPanel Centre, affiche les informations associées aux joueurs
+    * @param nbJoueurs 	Nombre de joueurs de la partie en cours
+    * @return	JPanel Centre
+    */
    private JPanel creerPanelCentre(int nbJoueurs){
 	   JPanel pCenter = new JPanel(new GridLayout(1, nbJoueurs, 50, 50));
 	   
@@ -141,7 +165,11 @@ public class FenetreGraphique extends JFrame {
 	   return pCenter;
    }
    
-   
+   /**
+    * Permet de créer un JPanel affichant toutes les informations associées à un joueur
+    * @param i	Indice du joueur
+    * @return	Le JPanel correspondant au joueur i
+    */
    private JPanel creerPanelJoueur(int i){
 	   JPanel panelJoueur = new JPanel(new GridLayout(3, 1));
 	   
@@ -149,7 +177,7 @@ public class FenetreGraphique extends JFrame {
 	   this.bControleur.relierPile(i, lCarte);
 	   
 
-	   LabelTexte lMain = new LabelTexte(this.bControleur.getNomJoueur(i)+"\n"+ "Nombre de cartes en main : ");
+	   LabelTexte lMain = new LabelTexte(this.bControleur.getNomJoueur(i)+" :  Nombre de cartes en main : ");
 	   this.bControleur.relierMain(i, lMain);
 	   lMain.setFont(new Font("Arial",Font.BOLD, 15));
 	   lMain.setForeground(Color.WHITE);
@@ -162,6 +190,13 @@ public class FenetreGraphique extends JFrame {
 	   return panelJoueur;
    }
 	
+ /*Inner class*/
+   
+   /**
+    * Classe permettant de créer un JPanel vide avec fond d'écran
+    * @author Tony CLONIER
+    *
+    */
 	class PanelImage extends JPanel {
 		public PanelImage(){
 			super();

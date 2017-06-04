@@ -29,7 +29,7 @@ public class Paquet{
 			if(j==2) couleur="Trefle";
 			if(j==3) couleur="Coeur";
 			for(int valeur = minValue; valeur <= 14; valeur++){
-				this.paquetCartes.add(new Carte(valeur, couleur/*, valeur+"-"+couleur.".png"*/));
+				this.paquetCartes.add(new Carte(valeur, couleur));
 			}
 		}
 		this.melanger();

@@ -13,7 +13,7 @@ public class TestProjet {
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(10, "Pique"));
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(11, "Trefle"));
 		joueursP1[0].getCartesEnMain().ajouter(new Carte(7, "Coeur"));
-		joueursP1[0].getCartesEnMain().ajouter(new Carte(13, "Trèfle"));
+		joueursP1[0].getCartesEnMain().ajouter(new Carte(13, "Trefle"));
 		joueursP1[1].getCartesEnMain().ajouter(new Carte(8, "Coeur"));
 		joueursP1[1].getCartesEnMain().ajouter(new Carte(11, "Pique"));
 		joueursP1[1].getCartesEnMain().ajouter(new Carte(8, "Pique"));
@@ -78,10 +78,6 @@ public class TestProjet {
 				parties[i].lancerTour();
 			}while(!parties[i].finie());
 			System.out.println(parties[i].joueurGagnant().getNom()+" a gagné la partie");	
-		}
-		
-		parties[3].lancerTour();
-
-		
+		}	
 	}
 }

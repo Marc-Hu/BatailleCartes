@@ -151,14 +151,16 @@ public class Partie extends Observable {
 			return false;
 		
 		this.setChanged();
-		this.notifyObservers("Partie finie");
+		String s = "Partie finie, "+this.joueurGagnant().getNom()+" a gagné la partie";
+		this.notifyObservers(s);
 		return true;
 	}
 	
+	/**
+	 * Méthode à lancer au début du tour, les joueurs posent une carte et on verifie si on doit faire une bataille
+	 * @return true si une bataille doit être faite
+	 */
 	public boolean initTour(){
-		if(this.finie())
-			return false;
-			
 		for(Joueur j : this.joueurs){
 			if(j.getEstDansPartie()){
 				j.poserUneCarte();
@@ -182,6 +184,10 @@ public class Partie extends Observable {
 		
 	}
 
+	/**
+	 * Méthode permettant de lancer une bataille, les joueurs posent une carte et on verifie si on doit continuer la bataille
+	 * @return true si bataille non terminée
+	 */
 	public boolean bataille(){
 		if(this.finie())
 			return false;
@@ -212,6 +218,9 @@ public class Partie extends Observable {
 		return false;
 	}
 	
+	/**
+	 * Méthode à lancer à la fin du tour permettant au gagnant de ramasser les cartes et d'initialiser le tour suivant
+	 */
 	public void finTour(){
 		//Le joueur gagnant le tour récupère toutes les cartes posées
 		Joueur gagnantTour = this.gagnantTour();
@@ -240,6 +249,9 @@ public class Partie extends Observable {
 		System.out.println("*****************************************");
 	}
 	
+	/**
+	 * Méthode permettant de lancer un tour complet
+	 */
 	public void lancerTour(){
 		if(this.finie())
 			System.out.println("La partie est terminée");
@@ -247,10 +259,9 @@ public class Partie extends Observable {
 			System.out.println("*****************************************");
 			System.out.println("Tour n°"+(this.nbTours+1));
 			
-			//Affiche la situation de chaque joueur
+
 			boolean faireBataille = this.initTour();
 
-			//Boucle interne simulant une bataille (cas où plusieurs joueurs ont la carte la plus forte)
 			while(faireBataille){
 				faireBataille = this.bataille();
 			}
@@ -259,11 +270,11 @@ public class Partie extends Observable {
 		}
 	}
 	
+	/**
+	 * Retourne le joueur ayant gagné la partie
+	 * @return	joueur ayant gagné la partie
+	 */
 	public Joueur joueurGagnant(){
-		if(!this.finie())
-			return null;
-		
-		Joueur jGagnant = null;
 		for(Joueur j : this.joueurs){
 			if(j.getEstDansPartie())
 				return j;
