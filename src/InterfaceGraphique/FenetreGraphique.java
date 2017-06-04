@@ -141,7 +141,13 @@ public class FenetreGraphique extends JFrame {
 			   }
 		   }
 	   });
-	   //bQuitter.addActionListener(   );
+	   
+		
+		bQuitter.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				FenetreGraphique.this.dispose();
+			}
+		});
 	   
 	   pSouth.add(bTour);
 	   pSouth.add(bQuitter);

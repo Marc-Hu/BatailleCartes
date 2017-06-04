@@ -19,7 +19,7 @@ public class Carte {
 	 */
 	public Carte(int valeur, String couleur){
 		this.valeur = valeur;
-		this.couleur = couleur;
+		this.couleur = couleur.toLowerCase();
 		this.nomFichier = this.nomCarte();
 	}
 	
