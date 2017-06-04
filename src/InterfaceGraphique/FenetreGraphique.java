@@ -36,14 +36,15 @@ public class FenetreGraphique extends JFrame {
     * @param nbJoueurs			Nombre de joueurs dans la partie
     * @param					Contrôleur faisant le lien avec la partie à superviser
     */
-   public FenetreGraphique(String title, String background, int x, int y, int w, int h, int nbJoueurs, BatailleControleur bc){
+   public FenetreGraphique(String title, String background,/* int x, int y, int w, int h,*/ int nbJoueurs, BatailleControleur bc){
 	    super(title);
 	    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE) ;                   
-	    this.setBounds(x, y, w, h);
+	    //this.setBounds(x, y, w, h);
 	    this.background = Toolkit.getDefaultToolkit().getImage(background);
 	    this.bControleur = bc;
 	    this.etatPartie = DEBUT_TOUR;
 	    this.initComposants(nbJoueurs);
+	    this.pack();
 	    this.setVisible(true);
 	    }
    
@@ -161,7 +162,7 @@ public class FenetreGraphique extends JFrame {
     * @return	JPanel Centre
     */
    private JPanel creerPanelCentre(int nbJoueurs){
-	   JPanel pCenter = new JPanel(new GridLayout(1, nbJoueurs, 50, 50));
+	   JPanel pCenter = new JPanel(new GridLayout(1, nbJoueurs, 50, 0));
 	   
 	   for(int i=0; i<nbJoueurs; i++)
 		   pCenter.add(this.creerPanelJoueur(i));
@@ -177,7 +178,7 @@ public class FenetreGraphique extends JFrame {
     * @return	Le JPanel correspondant au joueur i
     */
    private JPanel creerPanelJoueur(int i){
-	   JPanel panelJoueur = new JPanel(new GridLayout(3, 1));
+	   JPanel panelJoueur = new JPanel(new BorderLayout());
 	   
 	   LabelCarte lCarte = new LabelCarte();
 	   this.bControleur.relierPile(i, lCarte);
@@ -188,10 +189,9 @@ public class FenetreGraphique extends JFrame {
 	   lMain.setFont(new Font("Arial",Font.BOLD, 15));
 	   lMain.setForeground(Color.WHITE);
 	   lMain.setHorizontalAlignment(JLabel.CENTER);
-	   lMain.setVerticalAlignment(JLabel.CENTER);
 	   
-	   panelJoueur.add(lCarte);
-	   panelJoueur.add(lMain);
+	   panelJoueur.add(lCarte, BorderLayout.CENTER);
+	   panelJoueur.add(lMain, BorderLayout.SOUTH);
 	   panelJoueur.setOpaque(false);
 	   return panelJoueur;
    }

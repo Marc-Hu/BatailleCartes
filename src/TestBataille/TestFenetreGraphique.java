@@ -39,7 +39,7 @@ public class TestFenetreGraphique {
 			joueursP1[1].getCartesEnMain().ajouter(new Carte(7, "Trefle"));
 
 			BatailleControleur bControleur = new BatailleControleur(p1);
-			new FenetreGraphique("Bataille","images/green_background.jpg", 100, 0, 1000, 1000, 2, bControleur);
+			new FenetreGraphique("Bataille","images/green_background.jpg",/* 100, 0, 1000, 1000,*/ 2, bControleur);
 		} else if (test=="jeu d'essai2"){
 			Joueur[] joueursP2 = new Joueur[2];
 			joueursP2[0] = new Joueur("j1");
@@ -54,7 +54,7 @@ public class TestFenetreGraphique {
 			joueursP2[1].getCartesEnMain().ajouter(new Carte(9, "Trefle"));
 
 			BatailleControleur bControleur = new BatailleControleur(p2);
-			new FenetreGraphique("Bataille","images/green_background.jpg", 100, 0, 1000, 1000, 2, bControleur);
+			new FenetreGraphique("Bataille","images/green_background.jpg",/* 100, 0, 1000, 1000,*/ 2, bControleur);
 		} else if (test=="jeu d'essai3"){
 			Joueur[] joueursP3 = new Joueur[2];
 			joueursP3[0] = new Joueur("j1");
@@ -69,7 +69,7 @@ public class TestFenetreGraphique {
 			joueursP3[1].getCartesEnMain().ajouter(new Carte(10, "Coeur"));
 
 			BatailleControleur bControleur = new BatailleControleur(p3);
-			new FenetreGraphique("Bataille","images/green_background.jpg", 100, 0, 1000, 1000, 2, bControleur);
+			new FenetreGraphique("Bataille","images/green_background.jpg",/* 100, 0, 1000, 1000,*/ 2, bControleur);
 		} else if (test=="jeu d'essai4"){
 			Joueur[] joueursP4 = new Joueur[3];
 			joueursP4[0] = new Joueur("j1");
@@ -91,7 +91,7 @@ public class TestFenetreGraphique {
 			joueursP4[2].getCartesEnMain().ajouter(new Carte(4, "coeur"));
 
 			BatailleControleur bControleur = new BatailleControleur(p4);
-			new FenetreGraphique("Bataille","images/green_background.jpg", 100, 0, 1000, 1000, 3, bControleur);
+			new FenetreGraphique("Bataille","images/green_background.jpg",/* 100, 0, 1000, 1000,*/ 3, bControleur);
 		} else{
 			Joueur[] joueursP5 = new Joueur[4];
 			joueursP5[0] = new Joueur("j1");
@@ -102,7 +102,7 @@ public class TestFenetreGraphique {
 			p5.distribuerPaquet();
 
 			BatailleControleur bControleur = new BatailleControleur(p5);
-			new FenetreGraphique("Bataille","images/green_background.jpg", 100, 0, 1000, 1000, 4, bControleur);
+			new FenetreGraphique("Bataille","images/green_background.jpg",/* 100, 0, 1000, 1000,*/ 4, bControleur);
 		}
 	}
 }
