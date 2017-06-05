@@ -12,6 +12,8 @@ public class TestFenetreGraphique {
 		
 		final String background = "images/dark_background.jpg";
 		
+		final String backgroundVert = "images/green_background.jpg";
+		
 		String[] nomTest = {"jeu d'essai1", "jeu d'essai2", "jeu d'essai3", "jeu d'essai4", "normal"};
 		
 		JOptionPane jop = new JOptionPane();
@@ -104,7 +106,7 @@ public class TestFenetreGraphique {
 			p5.distribuerPaquet();
 
 			BatailleControleur bControleur = new BatailleControleur(p5);
-			new FenetreGraphique("Bataille", background,/* 100, 0, 1000, 1000,*/ 4, bControleur);
+			new FenetreGraphique("Bataille", backgroundVert,/* 100, 0, 1000, 1000,*/ 4, bControleur);
 		}
 	}
 }
